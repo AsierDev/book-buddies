@@ -8,22 +8,34 @@
 #header {
   background-image: url("../img/library-3185061_1920-compressor.jpg");
   background-size: cover;
+  
 }
+.navbar-brand {
+  background: transparent
+}
+
+.hero-opacity {
+  background: rgba(0,0,0,0.5) 
+}
+
 
 #heroContainer {
   margin-top: -5%
 }
 
 #title, #subtitle  {
-  padding-bottom: 40px 
+  padding-bottom: 40px;
 }
 
+.control {
+  padding-bottom: 2rem
+}
 
 #inputForm {
   margin-top: 40px;
-  max-width: 620px;
+  max-width: 60%;
+  min-width: 250px;
 }
-
 
 
 /*  CAROUSEL */

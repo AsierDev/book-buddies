@@ -8,8 +8,8 @@
 
 
     <link rel="stylesheet" href="../node_modules/bulma/css/bulma.css">
-    
-  
+
+
     <link rel="stylesheet" href="./main.css">
 
     <link rel="stylesheet" href="../node_modules/flickity/css/flickity.css" media="screen">
@@ -21,60 +21,62 @@
 <body>
 
     <section class="hero is-medium" id="header">
-        <!-- Hero head: will stick at the top -->
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item">
-                            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="navbar-item is-size-5 has-text-light">
-                                Libros por género
-                            </a>
-                            <a class="navbar-item is-size-5 has-text-light">
-                                Top Rated
-                            </a>
-                            <a class="navbar-item is-size-5 has-text-light">
-                                Cuenta
-                            </a>
+        <div class="hero-opacity">
 
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head">
+                <nav class="navbar">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item">
+                                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                            </a>
+                            <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenuHero" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item is-size-5 has-text-light">
+                                    Libros por género
+                                </a>
+                                <a class="navbar-item is-size-5 has-text-light">
+                                    Top Rated
+                                </a>
+                                <a class="navbar-item is-size-5 has-text-light">
+                                    Cuenta
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Hero content: will be in the middle -->
+            <div class="hero-body" id="heroContainer">
+                <div class="container has-text-centered">
+                    <h1 id="title" class="title has-text-light is-size-1">
+                        Encuentra tu libro favorito
+                    </h1>
+                    <h2 id="subtitle" class="subtitle has-text-light is-size-4">
+                        Busca por título, autor o ISBN
+                    </h2>
+                </div>
+
+                <div class="field is-horizontal level">
+                    <div class="field-body">
+                        <div class="field ">
+                            <div class="control level-item">
+                                <input id="inputForm" class="input is-large is-rounded has-text-centered" type="text" placeholder="Buscar en Book Buddies">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </div>
-
-        <!-- Hero content: will be in the middle -->
-        <div class="hero-body" id="heroContainer">
-            <div class="container has-text-centered">
-                <h1 id="title" class="title has-text-light is-size-1">
-                    Encuentra tu libro favorito
-                </h1>
-                <h2 id="subtitle" class="subtitle has-text-light is-size-4">
-                    Busca por título, autor o ISBN
-                </h2>
-            </div>
-
-            <div class="field is-horizontal level">
-                <div class="field-body">
-                    <div class="field ">
-                        <div class="control level-item">
-                            <input id="inputForm" class="input is-large is-rounded has-text-centered" type="text" placeholder="Buscar en Book Buddies">
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-
 
     </section>
 
@@ -82,452 +84,455 @@
 
     <section class="">
 
-            <div class="hero is-primary is-bold ">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">
-                            Genero de los libros
-                        </h1>
-                        <h3 class="subtitle">
-                            <a href="#">Explorar más libros</a>
-                        </h3>
-                    </div>
+        <div class="hero is-primary is-bold ">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Género de los libros
+                    </h1>
+                    <h3 class="subtitle">
+                        <a href="#">Explorar más libros</a>
+                    </h3>
                 </div>
             </div>
+        </div>
 
-            <div class="carousel" data-flickity='{ 
+        <div class="carousel" data-flickity='{ 
                 "wrapAround": true, 
                 "bgLazyLoad": 1, 
                 "autoPlay": 2200, 
                 "pauseAutoPlayOnHover": true,
                 "initialIndex": 0,
-                "cellAlign": "left"
+                "cellAlign": "left",
+                 "pageDots": false
             }'>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media ">
-
-                                <div class="has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified  is-dark">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases?? 
-
-                            </div>
-                        </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
                     </div>
+                    <div class="card-content ">
+                        <div class="media ">
 
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
+                            <div class="has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
 
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
+                        <div class="content has-text-justified  is-dark">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
 
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
 
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
 
-            <!-- SEGUNDO CAROUSEL -->
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
 
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
-            <div class="hero is-primary is-bold ">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">
-                            Genero de los libros
-                        </h1>
-                        <h3 class="subtitle">
-                            <a href="#">Explorar más libros</a>
-                        </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/coffee-2306471_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="carousel" data-flickity='{ 
+        </div>
+
+
+
+
+        <!-- SEGUNDO CAROUSEL -->
+
+
+        <div class="hero is-primary is-bold ">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Género de los libros
+                    </h1>
+                    <h3 class="subtitle">
+                        <a href="#">Explorar más libros</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel" data-flickity='{ 
                             "wrapAround": true, 
                             "bgLazyLoad": 1, 
                             "autoPlay": 3000, 
                             "pauseAutoPlayOnHover": true,
                             "initialIndex": 0,
-                            "cellAlign": "left"
+                            "cellAlign": "left",
+                             "pageDots": false
                         }'>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
                     </div>
+                    <div class="card-content ">
+                        <div class="media">
 
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
 
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
 
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
 
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
 
-            <!-- TERCER CAROUSEL -->
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
 
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
-            <div class="hero is-primary is-bold ">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">
-                            Genero de los libros
-                        </h1>
-                        <h3 class="subtitle">
-                            <a href="#">Explorar más libros</a>
-                        </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/book-3005680_640-compressor.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="carousel" data-flickity='{ 
+        </div>
+
+
+
+
+        <!-- TERCER CAROUSEL -->
+
+
+        <div class="hero is-primary is-bold ">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Género de los libros
+                    </h1>
+                    <h3 class="subtitle">
+                        <a href="#">Explorar más libros</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel" data-flickity='{ 
                             "wrapAround": true, 
                             "bgLazyLoad": 1, 
                             "autoPlay": 2000, 
                             "pauseAutoPlayOnHover": true,
                             "initialIndex": 0,
-                            "cellAlign": "left"
+                            "cellAlign": "left",
+                             "pageDots": false
                         }'>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
+                        </figure>
                     </div>
+                    <div class="card-content ">
+                        <div class="media">
 
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
 
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
 
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-cell ">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content ">
-                            <div class="media">
-
-                                <div class=" has-text-centered">
-                                    <p class="title is-4">Nombre del Libro</p>
-                                    <p class="subtitle is-6">Nombre del Autor</p>
-                                </div>
-                            </div>
-
-                            <div class="content has-text-justified">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
-                                3 frases??
-
-                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-cell ">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="../img/moms-entrepreneurs-2703456_640-compressor.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content ">
+                        <div class="media">
+
+                            <div class=" has-text-centered">
+                                <p class="title is-4">Nombre del Libro</p>
+                                <p class="subtitle is-6">Nombre del Autor</p>
+                            </div>
+                        </div>
+
+                        <div class="content has-text-justified">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
+                            3 frases??
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </section>
 
