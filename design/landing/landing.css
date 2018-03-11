@@ -1,0 +1,18 @@
+#landing {
+    background-image: url("../img/landing.jpg")
+}
+
+.container {
+    margin-top: -10rem
+}
+
+.subtitle{
+    padding-top: 5rem;
+    padding-bottom: 5rem
+
+}
+
+.box {
+  background: rgba(255,255,255,0.7)
+}
+
