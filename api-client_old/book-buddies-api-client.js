@@ -28,7 +28,7 @@ const api = {
     },
 
     generalSearch(query) {
-        return this._call(query, undefined)
+        return this._call(query)
     },
 
     /* create(name, surname, email, username, password) {
