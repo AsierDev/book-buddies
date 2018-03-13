@@ -1,19 +1,24 @@
 #landing {
     background-image: url("../img/landing.jpg");
-    
-}
-
-.container {
-    margin-top: -10rem
-}
-
-.subtitle{
-    padding-top: 5rem;
-    padding-bottom: 5rem
-
+    background-size: cover;
+ 
 }
 
 .box {
-  background: rgba(0,0,0,0.7)
+  background: rgba(0,0,0,0.7);
+  padding: 3rem;
 }
 
+.mainTitle {
+
+    padding-bottom: 6rem;
+    margin-top: -4rem
+}
+
+.button {
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px
+}
