@@ -5,14 +5,16 @@ const books = require('google-books-search')
 
 // ///////  GENERAL SEARCH BY TITLE, WRITER, ISBN...  //////
 
-/* books.search('señor de los anillos', 
+books.search('señor de los anillos', 
  (error, results) => {
     if (!error) {
         console.log(results)
     } else {
         console.log(error)
     }
-}) */
+}) 
+
+
 
 
 // /////// RETRIEVE A PARTICULAR BOOK  //////
@@ -45,10 +47,10 @@ const options = {
     lang: 'es'
 };
 
-books.search("dune", options, (error, results, apiResponse) => {
+/* books.search("dune", options, (error, results, apiResponse) => {
     if (!error) {
         console.log(results)
     } else {
         console.log(error)
     }
-})
+}) */
