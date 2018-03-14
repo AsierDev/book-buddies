@@ -1,0 +1,24 @@
+#landing {
+    background-image: url("../../../src/images/landingBackground.jpg");
+    background-size: cover;
+ 
+}
+
+#landing .box {
+  background: rgba(0,0,0,0.7);
+  padding: 3rem;
+}
+
+#landing .mainTitle {
+
+    padding-bottom: 6rem;
+    margin-top: -4rem
+}
+
+#landing .button {
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px
+}
