@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './MainPage.css'
 
 import NavBar from './../NavBar/NavBar'
-import Carousel2 from './../Carousel/Carousel2'
+import Carousel3 from './../Carousel/Carousel3'
 
 // import { Link } from 'react-router-dom'
 
@@ -42,8 +42,9 @@ class MainPage extends Component {
                     </div>
                 </div>
             </section>
-
-            <Carousel2 />   
+            
+            <Carousel3 />
+             
 
             </div>
 

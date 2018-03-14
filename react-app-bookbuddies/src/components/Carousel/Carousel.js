@@ -47,7 +47,7 @@ class Carousel extends Component {
                                 <p className="subtitle is-6">Nombre del Autor</p>
                             </div>
                             </div>
-                            <div className="content has-text-justified  is-dark">
+                            <div className="content has-text-left  is-dark">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
                             3 frases??
                             </div>

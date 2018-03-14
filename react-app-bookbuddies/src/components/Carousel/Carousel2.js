@@ -74,22 +74,22 @@ class Carousel2 extends Component {
 
             <Carousel defaultWait={0}>
             <Slide right>
-            <div class="columns">
-                <div class="column">
-                    <div classname="card">
-                        <div classname="card-image">
-                            <figure classname="image is-4by3">
+            <div className="columns">
+                <div className="column">
+                    <div className="card">
+                        <div className="card-image">
+                            <figure className="image is-4by3">
                                 <img src="../../images/BooksCoverDummy.jpg" alt="Placeholder image" />
                             </figure>
                         </div>
-                        <div classname="card-content ">
-                            <div classname="media ">
-                                <div classname="has-text-centered">
-                                    <p classname="title is-4">Nombre del Libro</p>
-                                    <p classname="subtitle is-6">Nombre del Autor</p>
+                        <div className="card-content ">
+                            <div className="media ">
+                                <div className="has-text-centered">
+                                    <p className="title is-4">Nombre del Libro</p>
+                                    <p className="subtitle is-6">Nombre del Autor</p>
                                 </div>
                             </div>
-                            <div classname="content has-text-justified  is-dark">
+                            <div className="content has-text-justified  is-dark">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
                                 3 frases??
                                 </div>
@@ -97,21 +97,21 @@ class Carousel2 extends Component {
                     </div>
        
                 </div>
-                <div class="column">
-                    <div classname="card">
-                        <div classname="card-image">
-                            <figure classname="image is-4by3">
+                <div className="column">
+                    <div className="card">
+                        <div className="card-image">
+                            <figure className="image is-4by3">
                                 <img src="../../images/BooksCoverDummy.jpg" alt="Placeholder image" />
                             </figure>
                         </div>
-                        <div classname="card-content ">
-                            <div classname="media ">
-                                <div classname="has-text-centered">
-                                    <p classname="title is-4">Nombre del Libro</p>
-                                    <p classname="subtitle is-6">Nombre del Autor</p>
+                        <div className="card-content ">
+                            <div className="media ">
+                                <div className="has-text-centered">
+                                    <p className="title is-4">Nombre del Libro</p>
+                                    <p className="subtitle is-6">Nombre del Autor</p>
                                 </div>
                             </div>
-                            <div classname="content has-text-justified  is-dark">
+                            <div className="content has-text-justified  is-dark">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
                                 3 frases??
                             </div>
@@ -119,21 +119,21 @@ class Carousel2 extends Component {
                     </div>
 
                 </div>
-                <div class="column">
-                    <div classname="card">
-                        <div classname="card-image">
-                            <figure classname="image is-4by3">
+                <div className="column">
+                    <div className="card">
+                        <div className="card-image">
+                            <figure className="image is-4by3">
                                 <img src="../../images/BooksCoverDummy.jpg" alt="Placeholder image" />
                             </figure>
                         </div>
-                        <div classname="card-content ">
-                            <div classname="media ">
-                                <div classname="has-text-centered">
-                                    <p classname="title is-4">Nombre del Libro</p>
-                                    <p classname="subtitle is-6">Nombre del Autor</p>
+                        <div className="card-content ">
+                            <div className="media ">
+                                <div className="has-text-centered">
+                                    <p className="title is-4">Nombre del Libro</p>
+                                    <p className="subtitle is-6">Nombre del Autor</p>
                                 </div>
                             </div>
-                            <div classname="content has-text-justified  is-dark">
+                            <div className="content has-text-justified  is-dark">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Descripcion del libro, como mucho
                                 3 frases??
                             </div>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import 'bulma/css/bulma.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 import './App.css';
 
@@ -10,8 +13,8 @@ import LandingPage from './components/LandingPage/LandingPage'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import MainPage from './components/MainPage/MainPage'
-/*import ListPage from './components/ListPage'
- */
+import ListingPage from './components/ListingPage/ListingPage'
+
 
 
 
@@ -34,9 +37,9 @@ class App extends Component {
             <Route path="/browse" render={() => (
               <MainPage />
             )} />
-            {/*<Route path="/results" render={() => (
-              <ListPage />
-            )} /> */}
+            <Route path="/results" render={() => (
+              <ListingPage />
+            )} /> 
 
           </div>
         </HashRouter>
