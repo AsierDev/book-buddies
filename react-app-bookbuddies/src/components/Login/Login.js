@@ -28,14 +28,14 @@ class Login extends Component {
                                     </p>
                                     <hr />
                                     <p className="control">
-                                        <button className="button is-primary">Login</button>
+                                        <Link to="/browse"> <button className="button is-primary">Login</button> </Link>
                                         <button id="cancel" className="button is-danger">Cancel</button>
                                     </p>
                                 </div>
                                 <p className="has-text-centered">
-                                    <a href="#">Crea cuenta nueva  </a>
-                                    |
-                                    <a href="#">  ¿Olvidaste la contraseña?</a>
+                                    <Link to="/register"> <a href="#">Crea cuenta nueva  </a>
+                                    </Link> 
+                                
                                 </p>
                             </div>
                         </div>

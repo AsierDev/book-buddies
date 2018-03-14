@@ -9,8 +9,8 @@ import { Route, HashRouter } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
-/*import MainPage from './components/MainPage'
-import ListPage from './components/ListPage'
+import MainPage from './components/MainPage/MainPage'
+/*import ListPage from './components/ListPage'
  */
 
 
@@ -31,10 +31,10 @@ class App extends Component {
             <Route path="/register" render={() => (
               <Register/>
             )} />
-            {/*<Route path="/browse" render={() => (
+            <Route path="/browse" render={() => (
               <MainPage />
             )} />
-            <Route path="/results" render={() => (
+            {/*<Route path="/results" render={() => (
               <ListPage />
             )} /> */}
 

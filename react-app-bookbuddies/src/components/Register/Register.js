@@ -46,7 +46,9 @@ class Register extends Component {
                                     </p>
                                 </div>
                                 <p className="has-text-centered">
+                                    <Link to="/login">
                                     <a href="../login/login.html">Ya tengo cuenta</a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>

@@ -1,0 +1,61 @@
+
+.hero-body {
+  padding: 1rem;
+}
+
+.carousel {
+  background: #363636
+}
+
+.carousel-cell {
+  margin-right: 10px;
+  /* background: #363636; */
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  /* content: counter(carousel-cell); */
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+
+@media (max-width: 550px) {
+  
+.carousel-cell {
+  width: 99.8%;
+}  
+}
+
+@media (min-width: 551px) and (max-width: 788px) {
+  
+.carousel-cell {
+  width: 49.8%;
+}  
+}
+
+@media (min-width: 789px) and (max-width: 1024px) {
+  
+.carousel-cell {
+  width: 33%;
+}  
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+.carousel-cell {
+  width: 24.5%;
+}  
+}
+
+@media (min-width: 1281px) {
+  
+.carousel-cell {
+  width: 19.5%;
+}
+}
