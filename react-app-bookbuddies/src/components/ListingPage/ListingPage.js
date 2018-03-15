@@ -1,10 +1,33 @@
 import React, { Component } from 'react';
 
+
+import booksBuddiesApi from './../../api/bookBuddiesApi'
+
+
 import NavBar from './../NavBar/NavBar'
 import Aside from './../Aside/Aside'
 import ResultsList from './../ResultsList/ResultsList'
 
 class ListingPage extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            results: []
+        }
+    }
+
+    search = (query) => {
+        console.log("heyhey" + query)
+        booksBuddiesApi.generalSearch(query)
+            .then(_query => this.setState({ results: _query }))
+    }
+
+    componentDidMount() {
+        this.search(this.props.match.params.query)
+    }
+
+ 
 
 
     render() {
@@ -34,7 +57,7 @@ class ListingPage extends Component {
                    
                     <Aside />
 
-                    <ResultsList />
+                        <ResultsList onSearch={this.state.results}/>
 
                 </div>
             </section>

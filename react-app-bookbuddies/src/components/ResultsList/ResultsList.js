@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+//import booksBuddiesApi from './../../api/bookBuddiesApi'
+
 // import './ResultsList.css'
 
 // import { Link } from 'react-router-dom'
@@ -7,8 +9,26 @@ import React, { Component } from 'react';
 
 class ResultsList extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+           // results: []
+        }
+    }
+
+  /*   search = (query) => {
+        console.log("heyhey"+query)
+        booksBuddiesApi.generalSearch(query)
+            .then(_query => this.setState({ results: _query }))
+    }
+
+    componentDidMount() {
+        this.search(this.props.match.params.query)
+    }
+ */
 
     render() {
+        console.log(this.props.onSearch.data)
         return (
 
             <div className="column is-9">
@@ -19,7 +39,7 @@ class ResultsList extends Component {
                             <article className="media">
                                 <div className="media-left">
                                     <figure className="image is-128x128">
-                                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="logo" />
                                     </figure>
                                 </div>
                                 <div className="media-content">

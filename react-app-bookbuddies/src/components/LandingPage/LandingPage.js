@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './LandingPage.css'
-import { Link, HashRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class LandingPage extends Component {
@@ -21,16 +21,16 @@ class LandingPage extends Component {
                                         <h2 className=" title is-4 has-text-light">
                                             Regístrate aquí para buscar contenido
                                         </h2>
-                                        <Link to="/register"> 
-                                        <a className="button is-danger is-rounded is-large">Register</a>
+                                        <Link to="/register"
+                                        className="button is-danger is-rounded is-large"> Register
                                         </Link>
                                     </div>
                                     <div className="column is-6">
                                         <h2 className=" title is-4 has-text-light access">
                                             ¿Ya tienes una cuenta? Accede ahora
                                         </h2>
-                                        <Link to="/login"> 
-                                        <a className="button is-success is-rounded is-large access">Log In</a>
+                                        <Link to="/login"
+                                        className="button is-success is-rounded is-large access">Log In 
                                         </Link>
                                     </div>
                                 </div>

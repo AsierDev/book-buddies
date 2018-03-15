@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import 'bulma/css/bulma.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,6 +19,10 @@ import ListingPage from './components/ListingPage/ListingPage'
 
 
 class App extends Component {
+
+
+
+
   render() {
     return (
       <div className="App">
@@ -37,9 +41,10 @@ class App extends Component {
             <Route path="/browse" render={() => (
               <MainPage />
             )} />
-            <Route path="/results" render={() => (
+            <Route exact path="/results/:query" render={(routeProps) => <ListingPage {...routeProps}/>} />
+           {/*  <Route path="/results" render={() => (
               <ListingPage />
-            )} /> 
+            )} />  */}
 
           </div>
         </HashRouter>

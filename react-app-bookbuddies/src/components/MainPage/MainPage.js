@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom"
 
 import './MainPage.css'
 
@@ -9,6 +10,25 @@ import Carousel3 from './../Carousel/Carousel3'
 
 
 class MainPage extends Component {
+
+    constructor() {
+        super()
+
+        this.state = {
+          query: ""
+        }
+    }
+
+    handleChange = input => {
+        this.setState({ query: input });
+    }
+
+    handleSubmit() {
+        this.props.history.push(`/results/${this.state.query}`)
+        this.setState({ query: '' })
+
+    }
+
 
 
     render() {
@@ -34,7 +54,19 @@ class MainPage extends Component {
                             <div className="field-body">
                                 <div className="field ">
                                     <div className="control level-item">
-                                        <input id="inputForm" className="input is-large is-rounded has-text-centered" type="text" placeholder="Buscar en Book Buddies" />
+                                        <form id="inputForm" 
+                                        onSubmit={ e => {
+                                            e.preventDefault()
+                                            this.handleSubmit()
+                                        }}
+                                        >
+                                            <input 
+                                            className="input is-large is-rounded has-text-centered" 
+                                            type="text" 
+                                            placeholder="Buscar en Book Buddies"
+                                            onChange={(e) => this.handleChange(e.target.value)} 
+                                            />
+                                    </form>    
                                     </div>
                                 </div>
                             </div>
@@ -52,4 +84,4 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage
+export default withRouter(MainPage)

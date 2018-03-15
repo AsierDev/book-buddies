@@ -33,7 +33,7 @@ class Login extends Component {
                                     </p>
                                 </div>
                                 <p className="has-text-centered">
-                                    <Link to="/register"> <a href="#">Crea cuenta nueva  </a>
+                                    <Link to="/register" href="#">Crea cuenta nueva  
                                     </Link> 
                                 
                                 </p>
