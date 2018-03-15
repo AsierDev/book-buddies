@@ -18,9 +18,12 @@ class ListingPage extends Component {
     }
 
     search = (query) => {
-        console.log("heyhey" + query)
+    
         booksBuddiesApi.generalSearch(query)
-            .then(_query => this.setState({ results: _query }))
+            .then(_query => 
+                this.setState({ 
+                    results: _query 
+                }))
     }
 
     componentDidMount() {

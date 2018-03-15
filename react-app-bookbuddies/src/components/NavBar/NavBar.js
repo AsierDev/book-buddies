@@ -13,7 +13,7 @@ class NavBar extends Component {
             <nav className="navbar">
                 <div className="container">
                     <div className="navbar-brand">
-                        <a className="navbar-item">
+                        <a className="navbar-item" href="#/browse">
                             <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
                         </a>
                         <span className="navbar-burger burger has-text-light" data-target="navbarMenuHeroA">

@@ -12,45 +12,48 @@ class ResultsList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-           // results: []
+            results: []
         }
     }
 
-  /*   search = (query) => {
-        console.log("heyhey"+query)
-        booksBuddiesApi.generalSearch(query)
-            .then(_query => this.setState({ results: _query }))
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.onSearch.data.data)
+        this.setState({ results: nextProps.onSearch.data.data})
+        
     }
-
-    componentDidMount() {
-        this.search(this.props.match.params.query)
-    }
- */
 
     render() {
-        console.log(this.props.onSearch.data)
+      
+        
+        console.log("renderizate")
         return (
-
+            
             <div className="column is-9">
 
-                <div className="box content secondColumn">
+                {this.state.results.map( _results => 
+                <div className="box content secondColumn" key={_results.id}>
                     <div className="notification is-dark">
                         <div className="box">
                             <article className="media">
                                 <div className="media-left">
-                                    <figure className="image is-128x128">
-                                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="logo" />
+                                    <figure className="image ">                                 
+                                            <img src={_results.thumbnail} className="bookCovers image " alt="logo" />
                                     </figure>
                                 </div>
+
                                 <div className="media-content">
                                     <div className="content">
                                         <p>
-                                            <strong>John Smith</strong>
-                                            <small>@johnsmith</small>
-                                            <small>31m</small>
-                                            <br /> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
-                                            amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                                </p>
+                                            <strong className="is-size-4">{_results.title}</strong>
+                                            <br />   
+                                                <strong className="is-size-5 has-text-weight-normal has-text-grey-dark">
+                                                    {_results.authors ? _results.authors[0] : "Varios Autores"}</strong>
+                                            <br />
+                                            
+                                        </p>
+                                        <p className="">     
+                                            <span className="">{_results.description}</span>
+                                        </p>
                                     </div>
                                     <nav className="level is-mobile">
                                         <div className="level-left">
@@ -72,6 +75,8 @@ class ResultsList extends Component {
                         </div>
                     </div>
                 </div>
+
+                 ) }           
             </div>
 
                 
