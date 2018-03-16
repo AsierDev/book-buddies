@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom"
 
 import './Aside.css'
 
@@ -12,17 +13,14 @@ class Aside extends Component {
         super()
 
         this.state = {
-            category: ""
+            
         }
     }
     
     handleClick = value => {
 
-        console.log(value)
-
-        this.setState({ category: value });
-        this.props.sendCategory(value)
-        
+        this.props.history.push(`/category/${value}`)
+       
     }
 
    
@@ -46,15 +44,29 @@ class Aside extends Component {
                             onClick={ e => {
                                 e.preventDefault()
                                 this.handleClick((e.target.getAttribute('data')))
-                                this.props.sendCategory((e.target.getAttribute('data')))
                             }}
-                            >Historia</a>
+                            >Historia
+                            </a>
                         </li>
                         <li>
-                            <a>Ciencia</a>
+                            <a
+                            data="science"
+                            onClick={ e => {
+                                e.preventDefault()
+                                this.handleClick((e.target.getAttribute('data')))
+                            }} 
+                            >Ciencia
+                            </a>
                         </li>
                         <li>
-                            <a>Ficción</a>
+                            <a
+                            data="fiction"
+                            onClick={ e => {
+                                e.preventDefault()
+                                this.handleClick((e.target.getAttribute('data')))
+                            }} 
+                            >Ficción
+                            </a>
                         </li>
                         <li>
                             <a className="is-active">Fantasía</a>
@@ -99,4 +111,4 @@ class Aside extends Component {
     }
 }
 
-export default Aside
+export default withRouter(Aside)

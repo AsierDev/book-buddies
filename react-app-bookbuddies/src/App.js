@@ -43,10 +43,8 @@ class App extends Component {
             )} />
             <Route exact path="/results/:query" render={(routeProps) => <ListingPage {...routeProps}/>} />
 
-            <Route exact path="/category/:query" render={(routeProps) => <ListingPage {...routeProps} />} />
-           {/*  <Route path="/results" render={() => (
-              <ListingPage />
-            )} />  */}
+            <Route exact path="/category/:category" render={(routeProps) => <ListingPage {...routeProps} />} />
+           
 
           </div>
         </HashRouter>

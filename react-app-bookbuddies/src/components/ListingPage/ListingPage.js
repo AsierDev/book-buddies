@@ -13,20 +13,21 @@ class ListingPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: [],
-            category: ""
+            results: []
         }
     }
 
-    search = (query, category) => {
+    searchQuery = query => {
 
-        if (query && !category)
             booksBuddiesApi.generalSearch(query)
                 .then(_query =>
                     this.setState({
                         results: _query
             }))
-        else if (!query && category)
+    }
+
+    searchCategory = category => {
+         
             booksBuddiesApi.categorySearch(category)
                 .then(_category =>
                     this.setState({
@@ -34,30 +35,35 @@ class ListingPage extends Component {
                     }))        
     }
 
+
+  
+    
     componentDidMount() {
-        this.search(this.props.match.params.query)
-
+        this.searchQuery(this.props.match.params.query)
+      
     }
-
+    
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        
+        console.log("nextProps")
+        this.searchCategory(nextProps.match.params.category)
 
     }
 
 
-    setCategory = (newCategory) => {
+
+
+
+   /*  setCategory = (newCategory) => {
         this.setState({
             category: newCategory
         })
     }
-
+ */
 
 
 
     render() {
 
-        console.log(this.props)
         return (
 
             <div>
@@ -73,7 +79,7 @@ class ListingPage extends Component {
                     <div className="hero-body">
                         <div className="container has-text-centered">
                             <h1 className="title">
-                                Resultados de {this.props.match.params.query}
+                                Results for {this.props.match.params.query || this.props.match.params.category} 
 
                             </h1>
                         </div>
@@ -83,9 +89,9 @@ class ListingPage extends Component {
                 <section className="container-fluid">
                     <div className="columns">
 
-                        <Aside sendCategory={this.setCategory} />
+                        <Aside />
 
-                        <ResultsList onSearch={this.state.results} />
+                        <ResultsList onSearch={this.state.results} sendCategory={this.state.category}  />
 
                     </div>
                 </section>

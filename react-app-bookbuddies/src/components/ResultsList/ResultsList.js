@@ -16,11 +16,15 @@ class ResultsList extends Component {
         }
     }
 
+  
     componentWillReceiveProps(nextProps) {
         console.log(nextProps.onSearch.data.data)
+        
         this.setState({ results: nextProps.onSearch.data.data})
         
     }
+    
+   
 
     render() {
       
