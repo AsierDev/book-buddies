@@ -13,60 +13,85 @@ class ListingPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: []
+            results: [],
+            category: ""
         }
     }
 
-    search = (query) => {
-    
-        booksBuddiesApi.generalSearch(query)
-            .then(_query => 
-                this.setState({ 
-                    results: _query 
-                }))
+    search = (query, category) => {
+
+        if (query && !category)
+            booksBuddiesApi.generalSearch(query)
+                .then(_query =>
+                    this.setState({
+                        results: _query
+            }))
+        else if (!query && category)
+            booksBuddiesApi.categorySearch(category)
+                .then(_category =>
+                    this.setState({
+                        results: _category
+                    }))        
     }
 
     componentDidMount() {
         this.search(this.props.match.params.query)
+
     }
 
- 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+        
+
+    }
+
+
+    setCategory = (newCategory) => {
+        this.setState({
+            category: newCategory
+        })
+    }
+
+
 
 
     render() {
+
+        console.log(this.props)
         return (
 
             <div>
-            
-            <section className="hero is-dark">
-                {/* Hero head: will stick at the top */}
-                <div className="hero-head">
-                    
-                    <NavBar />
 
-                </div>
-                {/* Hero content: will be in the middle */}
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <h1 className="title">
-                            Género de libros listados
-                         </h1>
+                <section className="hero is-dark">
+                    {/* Hero head: will stick at the top */}
+                    <div className="hero-head">
+
+                        <NavBar />
+
                     </div>
-                </div>
-            </section>
+                    {/* Hero content: will be in the middle */}
+                    <div className="hero-body">
+                        <div className="container has-text-centered">
+                            <h1 className="title">
+                                Resultados de {this.props.match.params.query}
 
-            <section className="container-fluid">
-                <div className="columns">
-                   
-                    <Aside />
+                            </h1>
+                        </div>
+                    </div>
+                </section>
 
-                        <ResultsList onSearch={this.state.results}/>
+                <section className="container-fluid">
+                    <div className="columns">
 
-                </div>
-            </section>
+                        <Aside sendCategory={this.setCategory} />
+
+                        <ResultsList onSearch={this.state.results} />
+
+                    </div>
+                </section>
 
 
-        </div>
+            </div>
 
 
         )

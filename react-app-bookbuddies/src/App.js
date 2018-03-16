@@ -42,6 +42,8 @@ class App extends Component {
               <MainPage />
             )} />
             <Route exact path="/results/:query" render={(routeProps) => <ListingPage {...routeProps}/>} />
+
+            <Route exact path="/category/:query" render={(routeProps) => <ListingPage {...routeProps} />} />
            {/*  <Route path="/results" render={() => (
               <ListingPage />
             )} />  */}

@@ -47,12 +47,12 @@ class ResultsList extends Component {
                                             <strong className="is-size-4">{_results.title}</strong>
                                             <br />   
                                                 <strong className="is-size-5 has-text-weight-normal has-text-grey-dark">
-                                                    {_results.authors ? _results.authors[0] : "Varios Autores"}</strong>
+                                                    {_results.authors[0] }</strong>
                                             <br />
                                             
                                         </p>
                                         <p className="">     
-                                            <span className="">{_results.description}</span>
+                                                <span className="">{_results.description} </span>
                                         </p>
                                     </div>
                                     <nav className="level is-mobile">

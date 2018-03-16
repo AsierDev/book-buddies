@@ -5,12 +5,12 @@ const routes = require('./routes')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-/* const host = process.env.MONGO_HOST
+const host = process.env.MONGO_HOST
 const MongoPort = process.env.MONGO_PORT
-const database = process.env.MONGO_DB */
+const database = process.env.MONGO_DB
 
 
-// mongoose.connect(`mongodb://${host}:${MongoPort}/${database}`)
+mongoose.connect(`mongodb://${host}:${MongoPort}/${database}`)
 
 const app = express()
 

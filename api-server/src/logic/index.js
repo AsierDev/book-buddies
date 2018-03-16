@@ -1,12 +1,14 @@
 const books = require('google-books-search')
 
+const defaultPic = 'http://ring49magic.com/blog/wp-content/plugins/google-bookshelves/images/no_cover_thumb.png'
+
 
 module.exports = {
 
     retrieveGeneralSearch(query) {
 
         const options = {
-            limit: 10,
+            limit: 20,
             type: 'books',
             lang: 'es'
         };
@@ -16,16 +18,34 @@ module.exports = {
                 (error, results) => {
                     if (!error) {
 
-                        results = results.map((book)=>{
-                            
-                                book.authors ? book.authors[0] : book.author = "Varios Autores"
-                                book.categories
-                                book.description ? book.description = book.description.substring(0,160)+'...' : "Este libro no cuenta con descripción."
-                                book.thumbnail ? book.thumbnail  : nada
-                                return book
-                            
-                        }) 
-                        console.log(results);
+                        results = results.map((book) => {
+
+                            book.authors ? book.authors[0] : book.authors = ["Varios Autores"]
+
+                            if (!book.title) {
+                                book.title = "Este libro no cuenta con título"
+                            } else if (book.title.length > 45) {
+                                book.title = book.title.substring(0, 45) + "..."
+                            } else {
+                                book.title
+                            }
+
+
+                            if (!book.description) {
+                                book.description = "Este libro no cuenta con descripción."
+                            } else if (book.description.length > 160) {
+                                book.description = book.description.substring(0, 160) + "..."
+                            } else {
+                                book.description
+                            }
+
+                            !book.thumbnail ? book.thumbnail = defaultPic : book.thumbnail
+
+
+                            return book
+
+                        })
+                        
                         resolve(results)
 
                     } else {

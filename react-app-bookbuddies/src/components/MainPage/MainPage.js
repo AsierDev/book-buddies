@@ -32,6 +32,7 @@ class MainPage extends Component {
 
 
     render() {
+
         return (
             <div>
             <section className="hero is-medium" id="header">

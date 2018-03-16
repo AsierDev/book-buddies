@@ -7,6 +7,26 @@ import './Aside.css'
 
 class Aside extends Component {
 
+    
+    constructor() {
+        super()
+
+        this.state = {
+            category: ""
+        }
+    }
+    
+    handleClick = value => {
+
+        console.log(value)
+
+        this.setState({ category: value });
+        this.props.sendCategory(value)
+        
+    }
+
+   
+
 
     render() {
         return (
@@ -21,7 +41,14 @@ class Aside extends Component {
                 <aside className="menu">
                     <ul className="menu-list is-size-5-desktop has-text-weight-normal">
                         <li>
-                            <a>Historia</a>
+                            <a 
+                            data="history"
+                            onClick={ e => {
+                                e.preventDefault()
+                                this.handleClick((e.target.getAttribute('data')))
+                                this.props.sendCategory((e.target.getAttribute('data')))
+                            }}
+                            >Historia</a>
                         </li>
                         <li>
                             <a>Ciencia</a>
