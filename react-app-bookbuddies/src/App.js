@@ -14,7 +14,7 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import MainPage from './components/MainPage/MainPage'
 import ListingPage from './components/ListingPage/ListingPage'
-
+import BookDetails from './components/BookDetails/BookDetails'
 
 
 
@@ -44,6 +44,8 @@ class App extends Component {
             <Route exact path="/results/:query" render={(routeProps) => <ListingPage {...routeProps}/>} />
 
             <Route exact path="/category/:category" render={(routeProps) => <ListingPage {...routeProps} />} />
+
+            <Route exact path="/book/:id" render={(routeProps) => <BookDetails {...routeProps} />} />
            
 
           </div>

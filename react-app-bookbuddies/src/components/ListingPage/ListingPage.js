@@ -19,6 +19,7 @@ class ListingPage extends Component {
 
     searchQuery = query => {
 
+        if (query)
             booksBuddiesApi.generalSearch(query)
                 .then(_query =>
                     this.setState({
@@ -28,6 +29,7 @@ class ListingPage extends Component {
 
     searchCategory = category => {
          
+        if(category)
             booksBuddiesApi.categorySearch(category)
                 .then(_category =>
                     this.setState({
@@ -39,26 +41,22 @@ class ListingPage extends Component {
   
     
     componentDidMount() {
+
         this.searchQuery(this.props.match.params.query)
+        this.searchCategory(this.props.match.params.category)
       
     }
     
-    componentWillReceiveProps(nextProps) {
-        console.log("nextProps")
-        this.searchCategory(nextProps.match.params.category)
+     componentWillReceiveProps(nextProps) {
 
-    }
+        console.log(nextProps)
 
+         this.searchQuery(nextProps.match.params.query)
 
+         this.searchCategory(nextProps.match.params.category)
 
+    } 
 
-
-   /*  setCategory = (newCategory) => {
-        this.setState({
-            category: newCategory
-        })
-    }
- */
 
 
 
@@ -91,7 +89,7 @@ class ListingPage extends Component {
 
                         <Aside />
 
-                        <ResultsList onSearch={this.state.results} sendCategory={this.state.category}  />
+                        <ResultsList onSearch={this.state.results} />
 
                     </div>
                 </section>

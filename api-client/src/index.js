@@ -19,6 +19,10 @@ const bookBuddiesApi = {
     authorSearch: function(query) {
         return axios.get(`${this._url()}/author/${query}`)
     },
+
+    retrieveBook: function(id) {
+        return axios.get(`${this._url()}/book/${id}`)
+    }
 }
 
 module.exports = bookBuddiesApi

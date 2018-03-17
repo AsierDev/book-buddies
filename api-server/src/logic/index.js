@@ -139,4 +139,21 @@ module.exports = {
         })
 
     },
+
+    retrieveBook(id) {
+
+        return new Promise((resolve, reject) => {
+
+
+            books.lookup(id,
+                (error, results) => {
+                    if (!error) {
+                        resolve(results)
+                    } else {
+                        resolve(error)
+                    }
+                })
+
+        })
+    },
 }
