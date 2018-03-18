@@ -67,13 +67,13 @@ class ListingPage extends Component {
             <div>
 
                 <section className="hero is-dark">
-                    {/* Hero head: will stick at the top */}
+                   
                     <div className="hero-head">
 
                         <NavBar />
 
                     </div>
-                    {/* Hero content: will be in the middle */}
+                   
                     <div className="hero-body">
                         <div className="container has-text-centered">
                             <h1 className="title">
@@ -103,3 +103,8 @@ class ListingPage extends Component {
 }
 
 export default ListingPage
+
+
+
+
+
