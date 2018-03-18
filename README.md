@@ -53,6 +53,9 @@
 ### - Listing Books
 ![Listing](./design/img/Data-Views-UML/ListedBooks.png)
 
+### - Book Details View
+![Book Details](./design/img/Data-Views-UML/BookView.png)
+
 
 ## Calendar 
 
