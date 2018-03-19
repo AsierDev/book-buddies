@@ -59,7 +59,7 @@
   display: table-cell;
   width: 20%;
   word-break: break-word;
-  border: #363636 solid 1px;
+  /* border: #363636 solid 1px !important; */
 }
 .opinion-scale li input[type="radio"] {
   display: none;

@@ -11,7 +11,7 @@ class BookDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: []
+            results: undefined
         }
     }
 
@@ -42,6 +42,7 @@ class BookDetails extends Component {
 
 
         return (
+            results ? 
             <div>
                 <section className="hero is-primary">
                     <NavBar />
@@ -51,7 +52,7 @@ class BookDetails extends Component {
                                 {results.title}
                             </h1>
                             <h2 className="subtitle">
-                                {results.authors}
+                                    {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors[0] }
                             </h2>
                         </div>
                     </div>
@@ -71,18 +72,18 @@ class BookDetails extends Component {
                                 <div className="basic-details">
                                         <h2>{results.title}</h2>
                                     <h5 className="is-italic">
-                                            <em> {results.authors}</em>
+                                            <em> {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors[0] }</em>
                                     </h5>
                                     <br />
                                     <p>
-                                        <span> ISBN:</span> FALTA ACCEDER
+                                            <span>ISBN: </span> {results.industryIdentifiers[0].identifier}
                                         <br />
                                             <span>Páginas:</span> {results.pageCount}
                                         <br />
                                             <span>Fecha de publicacion:</span> {results.publishedDate}
                                         <br />
                                         <br />
-                                        <Link to="/category/ciencia" className="tag is-link">Ciencia</Link>
+                                        <span className="tag is-link">{results.categories[0]}</span>
                                     </p>
                                 </div>
                             </div>
@@ -208,7 +209,7 @@ class BookDetails extends Component {
             </main>
 
         </div>
-
+        : null
         )
     }
 }
