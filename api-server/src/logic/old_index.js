@@ -1,10 +1,7 @@
 const books = require('google-books-search')
-const validate = require('./validate')
-const { User, Review, Book } = require('../models')
 
 const defaultPic = 'http://ring49magic.com/blog/wp-content/plugins/google-bookshelves/images/no_cover_thumb.png'
 
-const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishDate', 'thumbnail', 'title']
 
 module.exports = {
 
@@ -144,52 +141,47 @@ module.exports = {
     },
 
     retrieveBook(id) {
-        return Promise.resolve()
-            .then(() => {
-                if (!id) throw Error('id should be valid')
 
-                const book = {}
+        const promises = [
 
-                const promises = [
-                    new Promise((resolve, reject) => {
-                        books.lookup(id, (error, results) => {
-                            if (error) return reject(error)
+            new Promise(resolve => {
 
-                            googleBookProps.forEach(prop => book[prop] = results[prop])
+                books.lookup(id, (error, results) => {
+                    if (!error) {
+                        resolve(results)
+                    } else {
+                        resolve(error)
+                    }
+                })
+            }),
+            new Promise(resolve => {
+                Book.findone({ id })
+            })
+        ]
 
-                            resolve()
-                        })
-                    }),
-                    Book.findOne({ id })
-                        .then(_book => {
-                            if (_book)
-                                book.reviews = _book.reviews
-                            else
-                                Book.create({id})        
-                        })
-                ]
-
-                return Promise.all(promises)
-                    .then(() => book)
+        Promise.all(promises)
+            .then(data => {
+                console.log(data)
             })
     },
 
-    createUser(name, username, email, password) {
-    return Promise.resolve()
-        .then(() => {
-            validate({ name, username, email, password })
 
-            return User.findOne({ username })
+
+    /* retrieveBook(id) {
+
+        return new Promise((resolve, reject) => {
+
+
+            books.lookup(id,
+                (error, results) => {
+                    if (!error) {
+                        resolve(results)
+                    } else {
+                        resolve(error)
+                    }
+                })
+
         })
-        .then(user => {
-            if (user) throw Error('username already exists')
-
-            return User.create({ name, username, email, password })
-        })
-},
-
-
-
-   
+    }, */
 
 }

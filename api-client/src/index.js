@@ -22,6 +22,10 @@ const bookBuddiesApi = {
 
     retrieveBook: function(id) {
         return axios.get(`${this._url()}/book/${id}`)
+    },
+
+    registerUser: function (name, username, email, password) {
+        return axios.post(`${this._url()}/user`,{ name, username, email, password})
     }
 }
 

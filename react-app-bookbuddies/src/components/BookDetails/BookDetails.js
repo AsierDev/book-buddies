@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import booksBuddiesApi from './../../api/bookBuddiesApi'
-import { Link } from 'react-router-dom';
+
 
 import NavBar from './../NavBar/NavBar'
 import './bookPreview.css'
@@ -44,7 +44,7 @@ class BookDetails extends Component {
         return (
             results ? 
             <div>
-                <section className="hero is-primary">
+                <section className="hero is-dark">
                     <NavBar />
                     <div className="hero-body book-header">
                         <div className="container has-text-centered">
@@ -64,7 +64,7 @@ class BookDetails extends Component {
                     <section className="columns is-centered">
                         <div className="column is-one-quarter">
                             <figure className="profilePic image">
-                                <img src={results.thumbnail} />
+                                <img src={results.thumbnail} alt="Book cover" />
                             </figure>
                         </div>
                         <div className="column is-half">
@@ -92,7 +92,7 @@ class BookDetails extends Component {
                             <div className="details">
                                 <div className="has-text-centered">
                                         
-                                    <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.averageRating ? results.averageRating*2 : "Sin votos"}</p>    
+                                    <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.reviews ? results.reviews[0].vote : "Sin votos"}</p>    
 
                                     <p>Rating</p>
                                 </div>
@@ -196,11 +196,11 @@ class BookDetails extends Component {
                                 <div className="box">
                                     <h3> Titular Comentario</h3>
                                     <p>
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sunt sed reiciendis dolorum! Eveniet cum vel, atque quasi ratione ex sequi. Aliquam explicabo esse autem voluptates totam fugit, a soluta?
-            </p>
+                                    {results.reviews ? results.reviews[0].comment : "Sin comentarios todavia"}
+                                    </p>
                                     <p>
-                                        Nombre usuario
-            </p>
+                                    Nombre del usuario
+                                    </p>
                                 </div>
                             </div>
                         </article>
