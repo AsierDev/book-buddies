@@ -142,6 +142,33 @@ module.exports = {
 
     retrieveBook(id) {
 
+        const promises = [
+
+            new Promise(resolve => {
+
+                books.lookup(id, (error, results) => {
+                    if (!error) {
+                        resolve(results)
+                    } else {
+                        resolve(error)
+                    }
+                })
+            }),
+            new Promise(resolve => {
+                Book.findone({ id })
+            })
+        ]
+
+        Promise.all(promises)
+            .then(data => {
+                console.log(data)
+            })
+    },
+
+
+
+    /* retrieveBook(id) {
+
         return new Promise((resolve, reject) => {
 
 
@@ -155,5 +182,6 @@ module.exports = {
                 })
 
         })
-    },
+    }, */
+
 }

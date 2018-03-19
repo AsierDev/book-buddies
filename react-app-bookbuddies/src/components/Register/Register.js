@@ -18,13 +18,13 @@ class Register extends Component {
                                     Registrar Nuevo Usuario
                                 </h1>
                                 <div id="container" className="box">
-                                    <label className="label">Nombre</label>
+                                    <label className="label">Nombre Completo</label>
                                     <p className="control">
-                                        <input className="input" type="text" placeholder="John" required />
+                                        <input className="input" type="text" placeholder="John Smith" required />
                                     </p>
-                                    <label className="label">Apellidos</label>
+                                    <label className="label">Username</label>
                                     <p className="control">
-                                        <input className="input" type="text" placeholder="Smith" required />
+                                        <input className="input" type="text" placeholder="John23" required />
                                     </p>
                                     <label className="label">Email</label>
                                     <p className="control">
