@@ -165,7 +165,7 @@ module.exports = {
                             if (_book)
                                 book.reviews = _book.reviews
                             else
-                                Book.create({id})        
+                                Book.create({ id })
                         })
                 ]
 
@@ -175,21 +175,37 @@ module.exports = {
     },
 
     createUser(name, username, email, password) {
-    return Promise.resolve()
-        .then(() => {
-            validate({ name, username, email, password })
+        return Promise.resolve()
+            .then(() => {
+                validate({ name, username, email, password })
 
-            return User.findOne({ username })
-        })
-        .then(user => {
-            if (user) throw Error('username already exists')
+                return User.findOne({ username })
+            })
+            .then(user => {
+                if (user) throw Error('username already exists')
 
-            return User.create({ name, username, email, password })
-        })
-},
+                return User.create({ name, username, email, password })
+            })
+    },
+
+    loginUser(username, password) {
+        return Promise.resolve()
+            .then(() => {
+                validate({ username, password })
+
+                return User.findOne({ username })
+            })
+            .then(user => {
+                if (!user || user.password != password) throw Error('username or/and password incorrect')
+
+                return User.findOne(user, { password: 0 })
+            })
+    },
 
 
 
-   
+
+
+
 
 }

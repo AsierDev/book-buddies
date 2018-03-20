@@ -11,9 +11,20 @@ class BookDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: undefined
+            results: undefined,
+            rating: undefined
         }
     }
+
+    handleRating = value => {
+        this.setState({
+            rating: value
+        })
+    }
+
+    submitVote= () => {
+        console.log(this.state.rating)
+    } 
 
     componentWillMount() {
 
@@ -39,7 +50,6 @@ class BookDetails extends Component {
 
         const { results } = this.state
         console.log(results)
-
 
         return (
             results ? 
@@ -115,47 +125,72 @@ class BookDetails extends Component {
                     </section>
                     <section>
                         <div className="box rating">
-                            <form name="opinion">
+                            <form 
+                            name="opinion"  
+                            onSubmit={e => {
+                                e.preventDefault()
+                                this.submitVote()
+                            }}>
                                 <div className="field opinion-scale">
                                     <ul>
                                         <li>
-                                            <input type="radio" id="opinion-1" name="opinion-scale" defaultValue={1} />
+                                            <input type="radio" id="opinion-1" name="opinion-scale"
+                                            defaultValue={1} onChange={ e => {this.handleRating(1)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-1">1</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-2" name="opinion-scale" defaultValue={2} />
+                                            <input type="radio" id="opinion-2" name="opinion-scale" 
+                                            defaultValue={2} onChange={ e => { this.handleRating(2)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-2">2</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-3" name="opinion-scale" defaultValue={3} />
+                                            <input type="radio" id="opinion-3" name="opinion-scale" 
+                                            defaultValue={3} onChange={ e => { this.handleRating(3)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-3">3</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-4" name="opinion-scale" defaultValue={4} />
+                                            <input type="radio" id="opinion-4" name="opinion-scale" 
+                                            defaultValue={4} onChange={ e => { this.handleRating(4)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-4">4</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-5" name="opinion-scale" defaultValue={5} />
+                                            <input type="radio" id="opinion-5" name="opinion-scale" 
+                                            defaultValue={5} onChange={ e => { this.handleRating(5)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-5">5</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-6" name="opinion-scale" defaultValue={6} />
+                                            <input type="radio" id="opinion-6" name="opinion-scale" 
+                                            defaultValue={6} onChange={ e => { this.handleRating(6)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-6">6</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-7" name="opinion-scale" defaultValue={7} />
+                                            <input type="radio" id="opinion-7" name="opinion-scale" 
+                                            defaultValue={7} onChange={ e => { this.handleRating(7)} }
+                                             />
                                             <label className="label is-large" htmlFor="opinion-7">7</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-8" name="opinion-scale" defaultValue={8} />
+                                            <input type="radio" id="opinion-8" name="opinion-scale" 
+                                            defaultValue={8} onChange={ e => { this.handleRating(8)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-8">8</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-9" name="opinion-scale" defaultValue={9} />
+                                            <input type="radio" id="opinion-9" name="opinion-scale" 
+                                            defaultValue={9} onChange={ e => { this.handleRating(9)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-9">9</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="opinion-10" name="opinion-scale" defaultValue={10} />
+                                            <input type="radio" id="opinion-10" name="opinion-scale" 
+                                            defaultValue={10} onChange={ e => { this.handleRating(10)} }
+                                            />
                                             <label className="label is-large" htmlFor="opinion-10">10</label>
                                         </li>
                                     </ul>
@@ -192,17 +227,27 @@ class BookDetails extends Component {
                             </div>
                         </article>
                         <article className="box content">
-                            <div className="content-body">
+
+                        
+                            {results.reviews ? 
+                            
+                            results.reviews.map(review => 
+                
+                            <div className="content-body" key={review.user}>
                                 <div className="box">
                                     <h3> Titular Comentario</h3>
                                     <p>
-                                    {results.reviews ? results.reviews[0].comment : "Sin comentarios todavia"}
+                                    {review.comment}
                                     </p>
                                     <p>
                                     Nombre del usuario
                                     </p>
                                 </div>
                             </div>
+                            )
+                            :
+                            "Este libro no cuenta con reseñas todavia"
+                        }
                         </article>
                     </section>
                 </div>

@@ -26,6 +26,10 @@ const bookBuddiesApi = {
 
     registerUser: function (name, username, email, password) {
         return axios.post(`${this._url()}/user`,{ name, username, email, password})
+    },
+
+    loginUser: function (username, password) {
+        return axios.post(`${this._url()}/login`, { username, password })
     }
 }
 

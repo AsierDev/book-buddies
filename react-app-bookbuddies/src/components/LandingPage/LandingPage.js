@@ -27,7 +27,7 @@ class LandingPage extends Component {
                                     </div>
                                     <div className="column is-6">
                                         <h2 className=" title is-4 has-text-light access">
-                                            ¿Ya tienes cuenta? Accede ahora
+                                            ¿Ya tienes una cuenta? Accede ahora
                                         </h2>
                                         <Link to="/login"
                                         className="button is-success is-rounded is-large access">Log In 

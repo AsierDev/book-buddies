@@ -3,6 +3,7 @@ const retrieveCategory = require('./retrieveCategory')
 const retrieveAuthor = require('./retrieveAuthor')
 const retrieveBook = require('./retrieveBook')
 const createUser = require('./createUser')
+const loginUser = require('./loginUser')
 
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
     retrieveCategory,
     retrieveAuthor,
     retrieveBook,
-    createUser
+    createUser,
+    loginUser
 }
