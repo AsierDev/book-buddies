@@ -29,7 +29,7 @@ class Login extends Component {
         })
     }
 
-    onSetResult = (_login) => {
+    getUserId = (_login) => {
         
       sessionStorage.setItem('userId',JSON.stringify(_login.data.data.id._id))
        
@@ -43,10 +43,10 @@ class Login extends Component {
 
             .then(_login =>{
                 
-                this.onSetResult(_login)
                 
                 if (_login.data.status === 'OK') {
-
+                    this.getUserId(_login)
+                    
                    this.props.history.push(`/browse`)
                 } else {
                     alert("Wrong Password and/or Username")

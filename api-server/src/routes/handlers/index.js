@@ -4,6 +4,7 @@ const retrieveAuthor = require('./retrieveAuthor')
 const retrieveBook = require('./retrieveBook')
 const createUser = require('./createUser')
 const loginUser = require('./loginUser')
+const addReview = require('./addReview')
 
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
     retrieveAuthor,
     retrieveBook,
     createUser,
-    loginUser
+    loginUser,
+    addReview
 }

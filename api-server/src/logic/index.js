@@ -202,6 +202,21 @@ module.exports = {
             })
     },
 
+    addReview(bookId, userId, vote, comment) {
+        return Promise.resolve()
+            .then(() => {
+                return Book.findOneAndUpdate({ id: bookId },
+                    {
+                        "$push": {
+                            reviews: { userId, vote, comment }
+                        }
+                    }, {
+                        new: true
+                    }
+                )
+            })
+    }
+
 
 
 
