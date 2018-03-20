@@ -31,7 +31,7 @@ class Login extends Component {
 
     getUserId = (_login) => {
         
-      sessionStorage.setItem('userId',JSON.stringify(_login.data.data.id._id))
+      sessionStorage.setItem('userId',_login.data.data.id._id)
        
 
        console.log(sessionStorage)
