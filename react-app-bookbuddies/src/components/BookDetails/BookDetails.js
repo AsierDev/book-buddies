@@ -13,7 +13,7 @@ class BookDetails extends Component {
         this.state = {
             results: undefined,
             rating: undefined,
-            comment:undefined,
+            comment: undefined,
             modal: false,
         }
     }
@@ -29,12 +29,12 @@ class BookDetails extends Component {
             comment: text
         })
     }
-    
+
     submitReview = () => {
         console.log(this.state.rating, this.state.comment)
         console.log(this.props.match.params.id)
         console.log(sessionStorage.getItem("userId"))
-        
+
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
         const vote = this.state.rating
@@ -43,21 +43,25 @@ class BookDetails extends Component {
         booksBuddiesApi.addReview(bookId, userId, vote, comment)
             .then(
                 this.handleModal()
-                
-            )
-             .then( () => {
 
-                const reviews = this.state.results.reviews 
+            )
+            .then(() => {
+
+                let results = { ...this.state.results }
+
+                this.state.results.reviews ? results.reviews.push({ user: userId, vote, comment }) : results.reviews = [{ user: userId, vote, comment }]
+
+                this.setState({ results });
+
+
+              /*   const reviews = this.state.results.reviews
                 const results = this.state.results
-                reviews.push({user:userId, vote, comment})
+                reviews.push({ user: userId, vote, comment })
                 results.reviews = reviews
-                this.setState({results})
-                console.log(results)
-            } 
+                this.setState({ results })
+                console.log(results)  */
+            })
 
-            
-                
-            )
     }
 
     componentWillMount() {
@@ -66,7 +70,7 @@ class BookDetails extends Component {
     }
 
     retrieveBook = id => {
-        
+
         if (id)
             booksBuddiesApi.retrieveBook(id)
                 .then(_id =>
@@ -89,7 +93,7 @@ class BookDetails extends Component {
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
 
-        booksBuddiesApi.addBookToList(bookId,userId,list)
+        booksBuddiesApi.addBookToList(bookId, userId, list)
     }
 
 
@@ -158,22 +162,22 @@ class BookDetails extends Component {
                                         <div>
                                             <div className="has-text-centered">
                                                 <a
-                                                onClick={ e => {
-                                                    e.preventDefault()
-                                                    this.sendToList('favoritos')
-                                                }} 
-                                                className="button is-primary is-outlined">
-                                                Añadir a Favoritos
+                                                    onClick={e => {
+                                                        e.preventDefault()
+                                                        this.sendToList('favoritos')
+                                                    }}
+                                                    className="button is-primary is-outlined">
+                                                    Añadir a Favoritos
                                                 </a>
                                             </div>
                                             <br />
                                             <div className="has-text-centered">
                                                 <a
-                                                onClick={ e => {
-                                                    e.preventDefault()
-                                                    this.sendToList('wishlist')
-                                                }}  
-                                                className="button is-primary is-outlined"
+                                                    onClick={e => {
+                                                        e.preventDefault()
+                                                        this.sendToList('wishlist')
+                                                    }}
+                                                    className="button is-primary is-outlined"
                                                 >Añadir a Wishlist
                                                 </a>
                                             </div>
@@ -233,13 +237,13 @@ class BookDetails extends Component {
 
                                             <div className="content-body" key={review._id}>
                                                 <div className="box">
-                                                    
+
                                                     <p>
                                                         {review.comment}
                                                     </p>
                                                     <p>
                                                         {review.user.username}
-                                    </p>
+                                                    </p>
                                                 </div>
                                             </div>
                                         )
@@ -252,29 +256,29 @@ class BookDetails extends Component {
                         </div>
 
                         {this.state.modal ?
-                        <div className="modal is-active">
+                            <div className="modal is-active">
                                 <div className="modal-background" />
                                 <div className="modal-card">
 
                                     <header className="modal-card-head">
                                         <p className="modal-card-title">Añade tu voto y comentario </p>
-                                        
+
                                     </header>
 
-                            <form 
-                            name="opinion"
-                            onSubmit={e => {
-                                e.preventDefault()
-                                this.submitReview()
-                            }}
-                            >
-                                    <div className="modal-card-body">
+                                    <form
+                                        name="opinion"
+                                        onSubmit={e => {
+                                            e.preventDefault()
+                                            this.submitReview()
+                                        }}
+                                    >
+                                        <div className="modal-card-body">
 
-                                        <article>
-                                            <div className="box rating">
-                                                
+                                            <article>
+                                                <div className="box rating">
+
                                                     <div className="field opinion-scale">
-                                                        
+
                                                         <ul>
                                                             <li>
                                                                 <input type="radio" id="opinion-1" name="opinion-scale"
@@ -340,38 +344,38 @@ class BookDetails extends Component {
                                                     </div>
 
                                                     <div className="media">
-                                                        
+
                                                         <div className="media-content">
                                                             <div className="field">
                                                                 <p className="control">
-                                                                    <textarea className="textarea" placeholder="Add a comment..." defaultValue={""} onChange={e => { this.handleComment(e.target.value) }}/>
+                                                                    <textarea className="textarea" placeholder="Add a comment..." defaultValue={""} onChange={e => { this.handleComment(e.target.value) }} />
                                                                 </p>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
-                                            </div>
-                                        </article>
-                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
 
-                                    <footer className="modal-card-foot">
-                                        <button className="button is-success">Enviar</button>
+                                        <footer className="modal-card-foot">
+                                            <button className="button is-success">Enviar</button>
 
-                                        <button
-                                        onClick={e => {
-                                            e.preventDefault()
-                                            this.handleModal()
-                                        }} 
-                                        className="button"
-                                        >Cancel</button>
-                                    </footer>
+                                            <button
+                                                onClick={e => {
+                                                    e.preventDefault()
+                                                    this.handleModal()
+                                                }}
+                                                className="button"
+                                            >Cancel</button>
+                                        </footer>
 
-                                        </form>
+                                    </form>
 
                                 </div>
-                        </div>
-                        : 
-                        null}
+                            </div>
+                            :
+                            null}
 
                     </main>
 
