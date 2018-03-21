@@ -14,7 +14,7 @@ class BookDetails extends Component {
             results: undefined,
             rating: undefined,
             comment:undefined,
-            modal: false
+            modal: false,
         }
     }
 
@@ -29,12 +29,12 @@ class BookDetails extends Component {
             comment: text
         })
     }
-
+    
     submitReview = () => {
         console.log(this.state.rating, this.state.comment)
         console.log(this.props.match.params.id)
         console.log(sessionStorage.getItem("userId"))
-
+        
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
         const vote = this.state.rating
@@ -49,7 +49,7 @@ class BookDetails extends Component {
 
                 const reviews = this.state.results.reviews 
                 const results = this.state.results
-                reviews.push({_id:userId, vote, comment})
+                reviews.push({user:userId, vote, comment})
                 results.reviews = reviews
                 this.setState({results})
                 console.log(results)
@@ -80,9 +80,16 @@ class BookDetails extends Component {
 
         this.setState({
             modal: !this.state.modal,
-
         })
 
+    }
+
+    sendToList = (list) => {
+        console.log(list)
+        const userId = sessionStorage.getItem("userId")
+        const bookId = this.props.match.params.id
+
+        booksBuddiesApi.addBookToList(bookId,userId,list)
     }
 
 
@@ -123,7 +130,7 @@ class BookDetails extends Component {
                                         <div className="basic-details">
                                             <h2>{results.title}</h2>
                                             <h5 className="is-italic">
-                                                <em> {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors[0]}</em>
+                                                <em> {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors}</em>
                                             </h5>
                                             <br />
                                             <p>
@@ -143,18 +150,32 @@ class BookDetails extends Component {
                                     <div className="details">
                                         <div className="has-text-centered">
 
-                                            <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.reviews.vote ? results.reviews[0].vote : "Sin votos"}</p>
+                                            <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.reviews && results.reviews.length ? results.reviews[0].vote : "Sin votos"}</p>
 
                                             <p>Rating</p>
                                         </div>
                                         <br />
                                         <div>
                                             <div className="has-text-centered">
-                                                <a className="button is-primary is-outlined">Añadir a Favoritos</a>
+                                                <a
+                                                onClick={ e => {
+                                                    e.preventDefault()
+                                                    this.sendToList('favoritos')
+                                                }} 
+                                                className="button is-primary is-outlined">
+                                                Añadir a Favoritos
+                                                </a>
                                             </div>
                                             <br />
                                             <div className="has-text-centered">
-                                                <a className="button is-primary is-outlined">Añadir a Wishlist</a>
+                                                <a
+                                                onClick={ e => {
+                                                    e.preventDefault()
+                                                    this.sendToList('wishlist')
+                                                }}  
+                                                className="button is-primary is-outlined"
+                                                >Añadir a Wishlist
+                                                </a>
                                             </div>
                                             <br />
                                             <div className="has-text-centered">
@@ -206,18 +227,18 @@ class BookDetails extends Component {
                                 </article>
                                 <article className="box content">
 
-                                    {results.reviews ?
+                                    {results.reviews && results.reviews.length ?
 
                                         results.reviews.map(review =>
 
-                                            <div className="content-body" key={review.user}>
+                                            <div className="content-body" key={review._id}>
                                                 <div className="box">
                                                     
                                                     <p>
                                                         {review.comment}
                                                     </p>
                                                     <p>
-                                                        Nombre del usuario
+                                                        {review.user.username}
                                     </p>
                                                 </div>
                                             </div>

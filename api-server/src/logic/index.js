@@ -4,7 +4,7 @@ const { User, Review, Book } = require('../models')
 
 const defaultPic = 'http://ring49magic.com/blog/wp-content/plugins/google-bookshelves/images/no_cover_thumb.png'
 
-const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishDate', 'thumbnail', 'title']
+const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishedDate', 'thumbnail', 'title']
 
 module.exports = {
 
@@ -155,7 +155,15 @@ module.exports = {
                         books.lookup(id, (error, results) => {
                             if (error) return reject(error)
 
-                            googleBookProps.forEach(prop => book[prop] = results[prop])
+                            googleBookProps.forEach(prop => {
+
+
+                                if (!results[prop])
+                                    results[prop] = ["Sin datos"]
+
+                                book[prop] = results[prop]
+                            })
+
 
                             resolve()
                         })
@@ -171,7 +179,77 @@ module.exports = {
 
                 return Promise.all(promises)
                     .then(() => book)
+                    .then(book => {
+                        return User.populate(book.reviews, { path: "user", select: "username" }).then(() => book)
+                    })
+
+
+
             })
+    },
+
+    addReview(bookId, userId, vote, comment) {
+        return Promise.resolve()
+            .then(() => {
+                return Book.findOneAndUpdate({ id: bookId },
+                    {
+                        "$push": {
+                            reviews: { user: userId, vote, comment }
+                        }
+                    }, {
+                        new: true
+                    }
+                )
+            })
+            .then(() => {
+                return User.findOneAndUpdate({ _id: userId },
+                    {
+                        "$push": {
+
+                            reviews: { _id: bookId }
+                        }
+                    }, {
+                        new: true
+                    }
+                )
+            })
+    },
+
+    addBookToList(bookId, userId, list) {
+        return Promise.resolve()
+
+
+            .then(() => {
+                let _list
+                if (list == "wishlist") {
+                    return User.findOneAndUpdate({ _id: userId },
+                        {
+                            "$push": {
+
+                                wishlist: { _id: bookId }
+                            }
+                        }, {
+                            new: true
+                        }
+                    )
+
+                }
+                if (list == "favoritos") {
+
+                    return User.findOneAndUpdate({ _id: userId },
+                        {
+                            "$push": {
+
+                                favorites: { _id: bookId }
+                            }
+                        }, {
+                            new: true
+                        }
+                    )
+
+                }
+            })
+
     },
 
     createUser(name, username, email, password) {
@@ -202,20 +280,7 @@ module.exports = {
             })
     },
 
-    addReview(bookId, userId, vote, comment) {
-        return Promise.resolve()
-            .then(() => {
-                return Book.findOneAndUpdate({ id: bookId },
-                    {
-                        "$push": {
-                            reviews: { userId, vote, comment }
-                        }
-                    }, {
-                        new: true
-                    }
-                )
-            })
-    }
+
 
 
 

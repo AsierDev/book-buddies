@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
-const { retrieveGeneralSearch, retrieveCategory, retrieveAuthor, retrieveBook, createUser, loginUser, addReview } = require('./handlers')
+const { retrieveGeneralSearch, retrieveCategory, retrieveAuthor, retrieveBook, createUser, loginUser, addReview, addBookToList } = require('./handlers')
 
 const router = Router()
 
@@ -19,6 +19,8 @@ router.post('/user', jsonBodyParser, createUser)
 router.post('/login', jsonBodyParser, loginUser)
 
 router.post('/book/:bookId/review', jsonBodyParser, addReview)
+
+router.put('/book/:bookId/add', jsonBodyParser, addBookToList)
 
 
 

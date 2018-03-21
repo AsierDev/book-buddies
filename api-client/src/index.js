@@ -8,33 +8,40 @@ const bookBuddiesApi = {
         return 'http://localhost:5555/api'
     },
 
-    generalSearch: function(query) {
+    generalSearch: function (query) {
         return axios.get(`${this._url()}/results/${query}`)
     },
 
-    categorySearch: function(query) {
+    categorySearch: function (query) {
         return axios.get(`${this._url()}/category/${query}`)
     },
 
-    authorSearch: function(query) {
+    authorSearch: function (query) {
         return axios.get(`${this._url()}/author/${query}`)
     },
 
-    retrieveBook: function(id) {
+    retrieveBook: function (id) {
         return axios.get(`${this._url()}/book/${id}`)
     },
 
+    addReview: function (bookId, userId, vote, comment) {
+        return axios.post(`${this._url()}/book/${bookId}/review`, { userId, vote, comment })
+    },
+
+    addBookToList: function (bookId, userId, list) {
+        return axios.put(`${this._url()}/book/${bookId}/add`, { userId, list })
+    },
+
     registerUser: function (name, username, email, password) {
-        return axios.post(`${this._url()}/user`,{ name, username, email, password})
+        return axios.post(`${this._url()}/user`, { name, username, email, password })
     },
 
     loginUser: function (username, password) {
         return axios.post(`${this._url()}/login`, { username, password })
     },
 
-    addReview: function(bookId, userId, vote, comment) {
-        return axios.post(`${this._url()}/book/${bookId}/review`, { userId, vote, comment})
-    }
+  
+
 }
 
 module.exports = bookBuddiesApi
