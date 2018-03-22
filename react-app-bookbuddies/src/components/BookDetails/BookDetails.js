@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
+
 import booksBuddiesApi from './../../api/bookBuddiesApi'
-
-
 import NavBar from './../NavBar/NavBar'
 import './bookPreview.css'
 
@@ -10,6 +9,7 @@ class BookDetails extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
             results: undefined,
             rating: undefined,
@@ -31,10 +31,7 @@ class BookDetails extends Component {
     }
 
     submitReview = () => {
-        console.log(this.state.rating, this.state.comment)
-        console.log(this.props.match.params.id)
-        console.log(sessionStorage.getItem("userId"))
-
+    
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
         const vote = this.state.rating
@@ -53,13 +50,6 @@ class BookDetails extends Component {
 
                 this.setState({ results });
 
-
-              /*   const reviews = this.state.results.reviews
-                const results = this.state.results
-                reviews.push({ user: userId, vote, comment })
-                results.reviews = reviews
-                this.setState({ results })
-                console.log(results)  */
             })
 
     }
@@ -89,7 +79,7 @@ class BookDetails extends Component {
     }
 
     sendToList = (list) => {
-        console.log(list)
+
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
 
@@ -101,7 +91,6 @@ class BookDetails extends Component {
     render() {
 
         const { results } = this.state
-        console.log(results)
 
         return (
             results ?

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
-// import booksBuddiesApi from './../../api/bookBuddiesApi'
 
 import './ResultsList.css'
-
 
 class ResultsList extends Component {
 
@@ -14,30 +12,20 @@ class ResultsList extends Component {
         }
     }
 
-
-
     componentWillReceiveProps(nextProps) {
-
-        console.log(nextProps.onSearch.data.data)
 
         this.setState({ results: nextProps.onSearch.data.data })
 
     }
 
     selectedBook = bookId => {
-        console.log(bookId)
 
         this.props.history.push(`/book/${bookId}`)
 
-      /*   booksBuddiesApi.retrieveBook(bookId)
-            .then(_bookId =>  this.props.history.push(`/book/${bookId}`))                 */
     }
-
 
     render() {
 
-
-        console.log("renderizate")
         return (
 
             <div className="column is-9">
@@ -94,10 +82,6 @@ class ResultsList extends Component {
                     </a>
                 )}
             </div>
-
-
-
-
         )
     }
 }

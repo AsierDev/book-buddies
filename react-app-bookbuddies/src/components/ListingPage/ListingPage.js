@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-
 import booksBuddiesApi from './../../api/bookBuddiesApi'
-
-
 import NavBar from './../NavBar/NavBar'
 import Aside from './../Aside/Aside'
 import ResultsList from './../ResultsList/ResultsList'
@@ -37,9 +34,6 @@ class ListingPage extends Component {
                     }))        
     }
 
-
-  
-    
     componentDidMount() {
 
         this.searchQuery(this.props.match.params.query)
@@ -57,9 +51,6 @@ class ListingPage extends Component {
          this.searchCategory(nextProps.match.params.category)
 
     } 
-
-
-
 
     render() {
 
@@ -94,7 +85,6 @@ class ListingPage extends Component {
 
                     </div>
                 </section>
-
 
             </div>
 

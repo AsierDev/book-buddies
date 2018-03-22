@@ -4,9 +4,7 @@ import { withRouter } from "react-router-dom"
 import './MainPage.css'
 
 import NavBar from './../NavBar/NavBar'
-import Carousel3 from './../Carousel/Carousel3'
-
-// import { Link } from 'react-router-dom'
+import Carousel from './../Carousel/Carousel'
 
 
 class MainPage extends Component {
@@ -25,15 +23,10 @@ class MainPage extends Component {
 
     handleSubmit() {
         this.props.history.push(`/results/${this.state.query}`)
-        console.log(this.props)
+
         this.setState({ query: '' })
 
     }
-
-    componentDidMount() {
-        console.log(sessionStorage.getItem("userId"))
-    }
-
 
 
     render() {
@@ -81,7 +74,7 @@ class MainPage extends Component {
                     </div>
                 </section>
 
-                <Carousel3 />
+                <Carousel />
 
 
             </div>

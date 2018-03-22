@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+
 import 'bulma/css/bulma.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 import './App.css';
 
@@ -19,9 +18,6 @@ import BookDetails from './components/BookDetails/BookDetails'
 
 
 class App extends Component {
-
-
-
 
   render() {
     return (
@@ -47,7 +43,6 @@ class App extends Component {
 
             <Route exact path="/book/:id" render={(routeProps) => <BookDetails {...routeProps} />} />
            
-
           </div>
         </HashRouter>
       </div>

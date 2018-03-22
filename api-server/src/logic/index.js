@@ -172,23 +172,15 @@ module.exports = {
                         .then(_book => {
                             if (_book) {
                                 book.reviews = _book.reviews
-                                //console.log(book)
-                                // let rate = 7
 
-                                    let sum = 0
-                                    for (let i = 0; i < book.reviews.length; i++) {
-                                        sum += book.reviews[i].vote
-                                    }
-                                    sum /= book.reviews.length
-                                    //console.log(sum)
-                                    
+                                let sum = 0
+                                for (let i = 0; i < book.reviews.length; i++) {
+                                    sum += book.reviews[i].vote
+                                }
+                                sum /= book.reviews.length
                                 
-
-                              book.avRate = sum
-
+                                book.avRate = sum
                             }
-
-
                             else
                                 Book.create({ id })
                         })
@@ -208,6 +200,7 @@ module.exports = {
     addReview(bookId, userId, vote, comment, avRate) {
         return Promise.resolve()
             .then(() => {
+                if (!bookId) throw Error('bookId should exist')
                 return Book.findOneAndUpdate({ id: bookId },
                     {
                         "$push": {
@@ -219,6 +212,7 @@ module.exports = {
                 )
             })
             .then(() => {
+                if (!userId) throw Error('userId should exist')
                 return User.findOneAndUpdate({ _id: userId },
                     {
                         "$push": {
@@ -235,8 +229,10 @@ module.exports = {
     addBookToList(bookId, userId, list) {
         return Promise.resolve()
 
-
             .then(() => {
+                if (!list) throw Error('list should be valid')
+                if (!userId) throw Error('user should exist')
+                if (!bookId) throw Error('bookId should exist')
                 let _list
                 if (list == "wishlist") {
                     return User.findOneAndUpdate({ _id: userId },

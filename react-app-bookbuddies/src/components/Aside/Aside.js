@@ -3,12 +3,9 @@ import { withRouter } from "react-router-dom"
 
 import './Aside.css'
 
-// import { Link } from 'react-router-dom'
-
 
 class Aside extends Component {
 
-    
     constructor() {
         super()
 
@@ -22,8 +19,6 @@ class Aside extends Component {
         this.props.history.push(`/category/${value}`)
        
     }
-
-  
 
     render() {
         return (

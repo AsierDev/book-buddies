@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Register.css'
 import { Link } from 'react-router-dom';
+import './Register.css'
 
 
 class Register extends Component {
@@ -55,8 +55,6 @@ class Register extends Component {
                     </div>
                 </div>
             </section>
-
-
         )
     }
 }

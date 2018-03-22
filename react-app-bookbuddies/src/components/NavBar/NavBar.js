@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 
 import './NavBar.css'
 
-// import { Link } from 'react-router-dom'
-
-
 class NavBar extends Component {
-
 
     render() {
         return (
@@ -26,20 +22,17 @@ class NavBar extends Component {
                         <div className="navbar-end">
                             <a className="navbar-item is-size-5 has-text-light">
                                 Libros por género
-                                        </a>
+                            </a>
                             <a className="navbar-item is-size-5 has-text-light">
                                 Top Rated
-                                        </a>
+                            </a>
                             <a className="navbar-item is-size-5 has-text-light">
                                 Cuenta
-                                        </a>
+                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
-
-
-
         )
     }
 }
