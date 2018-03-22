@@ -45,7 +45,8 @@ const Review = new Schema({
         ref: 'User'
     },
     vote: Number,
-    comment: String
+    comment: String,
+    avRate: Number
 })
 
 const Book = new Schema({

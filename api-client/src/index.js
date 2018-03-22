@@ -24,8 +24,8 @@ const bookBuddiesApi = {
         return axios.get(`${this._url()}/book/${id}`)
     },
 
-    addReview: function (bookId, userId, vote, comment) {
-        return axios.post(`${this._url()}/book/${bookId}/review`, { userId, vote, comment })
+    addReview: function (bookId, userId, vote, comment, avRate) {
+        return axios.post(`${this._url()}/book/${bookId}/review`, { userId, vote, comment, avRate })
     },
 
     addBookToList: function (bookId, userId, list) {

@@ -3,9 +3,9 @@ const logic = require('../../logic')
 
 module.exports = (req, res) => {
     const { params: { bookId } } = req
-    const { body: { userId, vote, comment   } } = req
+    const { body: { userId, vote, comment, avRate   } } = req
 
-    logic.addReview( bookId, userId, vote, comment )
+    logic.addReview( bookId, userId, vote, comment, avRate )
         .then(id => {
             res.json(success({ id }))
         })

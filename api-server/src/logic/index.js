@@ -170,8 +170,25 @@ module.exports = {
                     }),
                     Book.findOne({ id })
                         .then(_book => {
-                            if (_book)
+                            if (_book) {
                                 book.reviews = _book.reviews
+                                //console.log(book)
+                                // let rate = 7
+
+                                    let sum = 0
+                                    for (let i = 0; i < book.reviews.length; i++) {
+                                        sum += book.reviews[i].vote
+                                    }
+                                    sum /= book.reviews.length
+                                    //console.log(sum)
+                                    
+                                
+
+                              book.avRate = sum
+
+                            }
+
+
                             else
                                 Book.create({ id })
                         })
@@ -188,13 +205,13 @@ module.exports = {
             })
     },
 
-    addReview(bookId, userId, vote, comment) {
+    addReview(bookId, userId, vote, comment, avRate) {
         return Promise.resolve()
             .then(() => {
                 return Book.findOneAndUpdate({ id: bookId },
                     {
                         "$push": {
-                            reviews: { user: userId, vote, comment }
+                            reviews: { user: userId, vote, comment, avRate }
                         }
                     }, {
                         new: true

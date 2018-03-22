@@ -154,7 +154,7 @@ class BookDetails extends Component {
                                     <div className="details">
                                         <div className="has-text-centered">
 
-                                            <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.reviews && results.reviews.length ? results.reviews[0].vote : "Sin votos"}</p>
+                                            <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.avRate ?results.avRate : "Sin votos"}</p>
 
                                             <p>Rating</p>
                                         </div>
