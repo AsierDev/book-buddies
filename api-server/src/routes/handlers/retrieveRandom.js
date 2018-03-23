@@ -3,7 +3,7 @@ const logic = require('../../logic')
 
 module.exports = (req, res) => {
 
-    logic.retrieveGeneralSearch()
+    logic.retrieveRandom()
         .then(results => {
             res.json(success(results))
         })

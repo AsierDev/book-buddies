@@ -14,7 +14,8 @@ class MainPage extends Component {
         super()
 
         this.state = {
-            query: ""
+            query: "",
+            results: []
         }
     }
 
@@ -32,8 +33,8 @@ class MainPage extends Component {
     componentWillMount() {
         bookBuddiesApi.retrieveRandom()
         .then( (books) => {
-            console.log(books)
-            //this.setState({ results: books })
+            console.log(books.data.data)
+            this.setState({ results: books.data.data })
         })
     }
 
@@ -83,7 +84,7 @@ class MainPage extends Component {
                     </div>
                 </section>
 
-                <Carousel />
+                <Carousel onLanding={this.state.results}/>
 
 
             </div>
