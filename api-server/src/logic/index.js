@@ -2,6 +2,8 @@ const books = require('google-books-search')
 const validate = require('./validate')
 const { User, Review, Book } = require('../models')
 
+const random = require('lodash.random');
+
 const defaultPic = 'http://ring49magic.com/blog/wp-content/plugins/google-bookshelves/images/no_cover_thumb.png'
 
 const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishedDate', 'thumbnail', 'title']
@@ -60,6 +62,13 @@ module.exports = {
                     }
                 })
         })
+    },
+
+    retrieveRandom() {
+        let randomQuery = random(0, 20)
+        const query = ['posteguillo', 'asimov', 'Stephanie Meyer', 'Carlos Ruiz Zafón', 'r.a.salvatore', 'ken follet', 'arturo perez reverte', 'John Grisham', 'John Boyne', 'saramago', 'rosa regas', 'j k rowling', 'stephen king','Philip K.Dick', 'Terry Pratchett', 'colleen mccullough', 'manfredi', 'george r r martin', 'Richard Dawkins', 'Yuval Noah Harari', 'Kip Thorne']
+
+        this.retrieveGeneralSearch()
     },
 
     retrieveCategory(query) {
@@ -179,7 +188,7 @@ module.exports = {
                                 }
                                 sum /= book.reviews.length
                                 
-                                book.avRate = sum
+                                book.avRate = parseFloat(sum).toFixed(1);
                             }
                             else
                                 Book.create({ id })
@@ -292,6 +301,8 @@ module.exports = {
                 return User.findOne(user, { password: 0 })
             })
     },
+
+
 
 
 

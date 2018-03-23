@@ -26,6 +26,8 @@ class ResultsList extends Component {
 
     render() {
 
+        console.log(this.state.results)
+
         return (
 
             <div className="column is-9">
