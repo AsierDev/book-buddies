@@ -74,6 +74,6 @@
 
 ## Heroku && surge
 
-(http://book-buddies.surge.sh/#/)
-(https://aqueous-tundra-90892.herokuapp.com/)
-(https://git.heroku.com/aqueous-tundra-90892.git)
+-   [surge](http://book-buddies.surge.sh/#/)
+-   [heroku](https://aqueous-tundra-90892.herokuapp.com/)
+-   [herokugit](https://git.heroku.com/aqueous-tundra-90892.git)
