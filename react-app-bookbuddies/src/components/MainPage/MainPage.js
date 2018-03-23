@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
+import bookBuddiesApi from './../../api/bookBuddiesApi'
 
 import './MainPage.css'
 
@@ -26,6 +27,14 @@ class MainPage extends Component {
 
         this.setState({ query: '' })
 
+    }
+
+    componentWillMount() {
+        bookBuddiesApi.retrieveRandom()
+        .then( (books) => {
+            console.log(books)
+            //this.setState({ results: books })
+        })
     }
 
 

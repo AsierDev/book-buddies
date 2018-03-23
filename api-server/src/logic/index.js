@@ -68,7 +68,7 @@ module.exports = {
         let randomQuery = random(0, 20)
         const query = ['posteguillo', 'asimov', 'Stephanie Meyer', 'Carlos Ruiz Zafón', 'r.a.salvatore', 'ken follet', 'arturo perez reverte', 'John Grisham', 'John Boyne', 'saramago', 'rosa regas', 'j k rowling', 'stephen king','Philip K.Dick', 'Terry Pratchett', 'colleen mccullough', 'manfredi', 'george r r martin', 'Richard Dawkins', 'Yuval Noah Harari', 'Kip Thorne']
 
-        this.retrieveGeneralSearch()
+        this.retrieveGeneralSearch(query[randomQuery])
     },
 
     retrieveCategory(query) {

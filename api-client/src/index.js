@@ -12,6 +12,10 @@ const bookBuddiesApi = {
         return axios.get(`${this._url()}/results/${query}`)
     },
 
+    retrieveRandom: function() {
+        return axios.get(`${this._url()}/browse`)
+    },
+
     categorySearch: function (query) {
         return axios.get(`${this._url()}/category/${query}`)
     },

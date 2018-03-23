@@ -71,9 +71,6 @@ class Carousel extends Component {
                         </div>
                     </div>
                 
-
-
-
                 <Slider {...settings} >
                     <div>
                         
