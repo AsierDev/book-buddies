@@ -71,3 +71,9 @@
 ## Trello
 
 [Enlace a Trello](https://trello.com/b/VuBC8YmB/book-buddies)
+
+## Heroku && surge
+
+(http://book-buddies.surge.sh/#/)
+(https://aqueous-tundra-90892.herokuapp.com/)
+(https://git.heroku.com/aqueous-tundra-90892.git)
