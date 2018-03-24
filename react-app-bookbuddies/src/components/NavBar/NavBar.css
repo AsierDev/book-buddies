@@ -6,3 +6,11 @@
 .dropdownTitle {
   color: white
 }
+
+/* .navInput {
+margin-right: 5rem
+} */
+
+.navInput input {
+  max-width: 200px;
+} 

@@ -12,7 +12,8 @@ class NavBar extends Component {
 
         this.state = {
             username: "",
-            query: ""
+            query: "",
+           
         }
     }
 
@@ -38,7 +39,7 @@ class NavBar extends Component {
 
     }
 
-    handleSubmit() {
+    handleSubmit = () => {
         this.props.history.push(`/results/${this.state.query}`)
 
         this.setState({ query: '' })
@@ -49,6 +50,10 @@ class NavBar extends Component {
         this.setState({ query: input });
     }
 
+    toggleBurger = () => {
+        this.setState({burger: !this.state.burger })
+    } 
+
     render() {
         return (
             <nav className="navbar">
@@ -58,7 +63,14 @@ class NavBar extends Component {
                             <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
                         </a>
 
-                        <span className="navbar-burger burger has-text-light" data-target="navbarMenuHeroA">
+                        <span 
+                        className="navbar-burger burger has-text-light" 
+                        data-target="navbarMenuHeroA" 
+                        onClick={
+                            e => {
+                                e.preventDefault()
+                                this.toggleBurger()
+                            }}>
                             <span />
                             <span />
                             <span />
@@ -66,19 +78,19 @@ class NavBar extends Component {
 
                     </div>
 
-                    <div id="navbarMenuHero" className="navbar-menu">
+                    <div id="navbarMenuHero" className="navbar-menu has-text-centered " >
                         <div className="navbar-end">
 
                             <span className="navbar-item is-size-5 has-text-light">
 
-                                <div className="navbar-item ">
+                                <div className="navbar-item navInput ">
                                     <form onSubmit={
                                         e => {
                                             e.preventDefault()
                                             this.handleSubmit()
                                         }}>
                                     <input                                      
-                                        className="navInput input is-primary"
+                                        className="navInput input is-primary  is-rounded"
                                         type="text"
                                         placeholder="Search"
                                         onChange={(e) => this.handleChange(e.target.value)}
