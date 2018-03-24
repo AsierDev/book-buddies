@@ -44,6 +44,10 @@ const bookBuddiesApi = {
         return axios.post(`${this._url()}/login`, { username, password })
     },
 
+    retrieveUser: function(id) {
+        return axios.get(`${this._url()}/user/${id}`)
+    },
+
   
 
 }

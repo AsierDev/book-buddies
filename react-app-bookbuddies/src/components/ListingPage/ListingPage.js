@@ -21,17 +21,17 @@ class ListingPage extends Component {
                 .then(_query =>
                     this.setState({
                         results: _query
-            }))
+                    }))
     }
 
     searchCategory = category => {
-         
-        if(category)
+
+        if (category)
             booksBuddiesApi.categorySearch(category)
                 .then(_category =>
                     this.setState({
                         results: _category
-                    }))        
+                    }))
     }
 
     componentDidMount() {
@@ -39,18 +39,18 @@ class ListingPage extends Component {
         this.searchQuery(this.props.match.params.query)
         this.searchCategory(this.props.match.params.category)
         console.log(sessionStorage)
-      
+
     }
-    
-     componentWillReceiveProps(nextProps) {
+
+    componentWillReceiveProps(nextProps) {
 
         console.log(nextProps)
 
-         this.searchQuery(nextProps.match.params.query)
+        this.searchQuery(nextProps.match.params.query)
 
-         this.searchCategory(nextProps.match.params.category)
+        this.searchCategory(nextProps.match.params.category)
 
-    } 
+    }
 
     render() {
 
@@ -59,27 +59,45 @@ class ListingPage extends Component {
             <div>
 
                 <section className="hero is-dark">
-                   
+
                     <div className="hero-head">
 
                         <NavBar />
 
                     </div>
-                   
-                    <div className="hero-body">
-                        <div className="container has-text-centered">
-                            <h1 className="title">
-                                Results for {this.props.match.params.query || this.props.match.params.category} 
 
-                            </h1>
+                    <div className="hero-body columns is-mobile">
+                        <div className="control column is-2 is-offset-1 is-narrow-mobile" style={{ width: '30%' }}>
+                            
+
+                            <input className="input is-primary" type="text" placeholder="Primary input" />
+                       
                         </div>
+
+                        <div className="container has-text-centered column">
+                            <h4 className="title">
+                                Results for  <br /> {this.props.match.params.query || this.props.match.params.category}
+                            </h4>
+                        </div>
+
+                        <div className="column is-2 is-offset-1" style={{ width: '20%' }}>
+
+                            <a className="button is-primary">Atrás</a>
+
+                        </div>
+
                     </div>
+
+                    <div className="hero-foot columns">
+
+                    </div>
+
                 </section>
 
                 <section className="container-fluid">
                     <div className="columns">
 
-                        <Aside />
+                        {/* <Aside /> */}
 
                         <ResultsList onSearch={this.state.results} />
 

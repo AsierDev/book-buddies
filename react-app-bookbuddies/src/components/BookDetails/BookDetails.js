@@ -40,12 +40,6 @@ class BookDetails extends Component {
         booksBuddiesApi.addReview(bookId, userId, vote, comment)
         .then(() => {
             
-           /*  let results = { ...this.state.results }
-            
-            this.state.results.reviews ? results.reviews.push({ user: userId, vote, comment }) : results.reviews = [{ user: userId, vote, comment }]
-            
-            this.setState({ results });  */
-            
             this.retrieveBook(this.props.match.params.id)
             
         })
@@ -92,10 +86,9 @@ class BookDetails extends Component {
 
     render() {
 
-        console.log("render")
-
+        
         const { results } = this.state
-
+        
         return (
             results ?
                 <div>

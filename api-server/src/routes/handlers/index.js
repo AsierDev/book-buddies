@@ -7,6 +7,7 @@ const loginUser = require('./loginUser')
 const addReview = require('./addReview')
 const addBookToList = require('./addBookToList')
 const retrieveRandom = require('./retrieveRandom')
+const retrieveUser = require('./retrieveUser')
 
 
 module.exports = {
@@ -18,5 +19,6 @@ module.exports = {
     loginUser,
     addReview,
     addBookToList,
-    retrieveRandom
+    retrieveRandom,
+    retrieveUser
 }

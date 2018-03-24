@@ -74,6 +74,7 @@ class MainPage extends Component {
                                                     type="text"
                                                     placeholder="Buscar en Book Buddies"
                                                     onChange={(e) => this.handleChange(e.target.value)}
+                                                    required
                                                 />
                                             </form>
                                         </div>

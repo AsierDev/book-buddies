@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { withRouter } from "react-router-dom"
+
 import Slider from 'react-slick'
 
 import './Carousel.css'
@@ -23,6 +25,11 @@ class Carousel extends Component {
             results: nextProps.onLanding
         })
 
+    }
+
+    showBook(bookId) {
+
+        this.props.history.push(`/book/${bookId}`)
     }
  
 
@@ -101,7 +108,7 @@ class Carousel extends Component {
                 
                     <div key={_results.id}>
                         
-                        <figure className="image is-square">
+                        <figure className="image is-square"  onClick={bookId => this.showBook(_results.id) }>
                             <img src={_results.thumbnail} alt="Book Cover" />
                         </figure>
                     
@@ -117,4 +124,4 @@ class Carousel extends Component {
     }
 }
 
-export default Carousel
+export default withRouter(Carousel)

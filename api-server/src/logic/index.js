@@ -184,11 +184,12 @@ module.exports = {
 
                                 let sum = 0
                                 for (let i = 0; i < book.reviews.length; i++) {
-                                    sum += book.reviews[i].vote
+                                    sum += book.reviews[i].vote 
                                 }
                                 sum /= book.reviews.length
+
                                 
-                                book.avRate = parseFloat(sum).toFixed(1);
+                                book.avRate = !isNaN(sum) ? parseFloat(sum).toFixed(1) : "Sin Votos";
                             }
                             else
                                 Book.create({ id })
@@ -302,6 +303,15 @@ module.exports = {
             })
     },
 
+    retrieveUser(id) {
+        return Promise.resolve()
+
+            .then(() => {
+                if (!id) throw Error('id should be valid')
+
+                return User.findOne({ _id:id }, {password:0})
+            })    
+    }
 
 
 
