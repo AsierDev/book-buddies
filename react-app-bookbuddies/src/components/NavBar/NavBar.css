@@ -1,3 +1,8 @@
-/* .navbar-brand {
-  background: transparent
-} */
+.dropdown, .dropdown button, .dropdown trigger  {
+  background: transparent;
+  border-color: transparent
+}
+
+.dropdownTitle {
+  color: white
+}

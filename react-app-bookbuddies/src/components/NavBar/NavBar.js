@@ -11,7 +11,8 @@ class NavBar extends Component {
         super()
 
         this.state = {
-            username: ""
+            username: "",
+            query: ""
         }
     }
 
@@ -37,6 +38,17 @@ class NavBar extends Component {
 
     }
 
+    handleSubmit() {
+        this.props.history.push(`/results/${this.state.query}`)
+
+        this.setState({ query: '' })
+
+    }
+
+    handleChange = input => {
+        this.setState({ query: input });
+    }
+
     render() {
         return (
             <nav className="navbar">
@@ -45,25 +57,42 @@ class NavBar extends Component {
                         <a className="navbar-item" href="#/browse">
                             <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
                         </a>
+
                         <span className="navbar-burger burger has-text-light" data-target="navbarMenuHeroA">
                             <span />
                             <span />
                             <span />
                         </span>
-                        
+
                     </div>
+
                     <div id="navbarMenuHero" className="navbar-menu">
                         <div className="navbar-end">
-                        
+
                             <span className="navbar-item is-size-5 has-text-light">
-                                
+
+                                <div className="navbar-item ">
+                                    <form onSubmit={
+                                        e => {
+                                            e.preventDefault()
+                                            this.handleSubmit()
+                                        }}>
+                                    <input                                      
+                                        className="navInput input is-primary"
+                                        type="text"
+                                        placeholder="Search"
+                                        onChange={(e) => this.handleChange(e.target.value)}
+                                        required
+                                    />
+                                    </form>
+                                </div>
 
                                 <div className="dropdown is-hoverable">
                                     <div className="dropdown-trigger">
                                         <button className="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                                            <span> Libros por género </span>
+                                            <span className="dropdownTitle"> Libros por género </span>
                                             <span className="icon is-small">
-                                                <i className="fa fa-angle-down" aria-hidden="true" />
+                                                <i className="fa fa-angle-down dropdownTitle" aria-hidden="true" />
                                             </span>
                                         </button>
                                     </div>
@@ -173,17 +202,6 @@ class NavBar extends Component {
 
                                                     <li>
                                                         <a
-                                                            data="travel"
-                                                            onClick={e => {
-                                                                e.preventDefault()
-                                                                this.handleClick((e.target.getAttribute('data')))
-                                                            }}
-                                                        >Viajes
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a
                                                             data="sports"
                                                             onClick={e => {
                                                                 e.preventDefault()
@@ -204,46 +222,27 @@ class NavBar extends Component {
                                                         </a>
                                                     </li>
 
-                                                    <li>
-                                                        <a
-                                                            data="health"
-                                                            onClick={e => {
-                                                                e.preventDefault()
-                                                                this.handleClick((e.target.getAttribute('data')))
-                                                            }}
-                                                        >Salud
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a
-                                                            data="cooking"
-                                                            onClick={e => {
-                                                                e.preventDefault()
-                                                                this.handleClick((e.target.getAttribute('data')))
-                                                            }}
-                                                        >Cocina
-                                                        </a>
-                                                    </li>
-
                                                 </ul>
 
 
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
+
+                                <a className="navbar-item is-size-5 has-text-light">
+                                    {this.state.username}
+
+                                </a>
 
 
-                               
+
+
+
                             </span>
                             {/* <a className="navbar-item is-size-5 has-text-light">
                                 Top Rated
                             </a> */}
-                            <a className="navbar-item is-size-5 has-text-light">
-                                {this.state.username}
-                                
-                            </a>
                         </div>
                     </div>
                 </div>

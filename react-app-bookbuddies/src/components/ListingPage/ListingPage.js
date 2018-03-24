@@ -4,6 +4,7 @@ import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
 import Aside from './../Aside/Aside'
 import ResultsList from './../ResultsList/ResultsList'
+import './ListingPage.css'
 
 class ListingPage extends Component {
 
@@ -66,25 +67,15 @@ class ListingPage extends Component {
 
                     </div>
 
-                    <div className="hero-body columns is-mobile">
-                        <div className="control column is-2 is-offset-1 is-narrow-mobile" style={{ width: '30%' }}>
-                            
+                    <div className="hero-body columns heroListing">
 
-                            <input className="input is-primary" type="text" placeholder="Primary input" />
-                       
-                        </div>
-
-                        <div className="container has-text-centered column">
-                            <h4 className="title">
-                                Results for  <br /> {this.props.match.params.query || this.props.match.params.category}
+                        <div className="container has-text-centered column is-6 is-offset-3">
+                            <h4 className=" is-size-3">
+                                Results for   {this.props.match.params.query || this.props.match.params.category}
                             </h4>
                         </div>
 
-                        <div className="column is-2 is-offset-1" style={{ width: '20%' }}>
-
-                            <a className="button is-primary">Atrás</a>
-
-                        </div>
+                        
 
                     </div>
 
@@ -95,7 +86,7 @@ class ListingPage extends Component {
                 </section>
 
                 <section className="container-fluid">
-                    <div className="columns">
+                    <div className="columns is-centered">
 
                         {/* <Aside /> */}
 

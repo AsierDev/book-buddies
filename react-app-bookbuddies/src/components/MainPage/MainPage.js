@@ -46,7 +46,7 @@ class MainPage extends Component {
                 <section className="hero is-medium" id="header">
                     <div className="hero-opacity">
 
-                        <div className="hero-head">
+                        <div className="hero-head heroMain">
                             <NavBar />
                         </div>
 

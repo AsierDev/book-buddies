@@ -30,7 +30,7 @@ class ResultsList extends Component {
 
         return (
 
-            <div className="column is-10 is-offset-1">
+            <div className="column is-10">
 
                 {this.state.results.map(_results =>
 

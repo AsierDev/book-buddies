@@ -32,9 +32,11 @@
 }
 
 
-/*  CAROUSEL */
+/*  NAV */
 
-
+.heroMain .navInput {
+  display: none
+}
 
 
 
