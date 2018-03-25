@@ -25,6 +25,8 @@ module.exports = {
                 (error, results) => {
                     if (!error) {
 
+                        !results.length ? results = ["No hay resultados para esta búsqueda"] :
+
                         results = results.map((book) => {
 
                             book.authors ? book.authors[0] : book.authors = ["Varios Autores"]
@@ -75,7 +77,7 @@ module.exports = {
 
         const options = {
             field: 'subject',
-            limit: 40,
+            limit: 20,
             type: 'books',
             lang: 'es'
         };

@@ -24,9 +24,15 @@ class MainPage extends Component {
     }
 
     handleSubmit() {
-        this.props.history.push(`/results/${this.state.query}`)
 
-        this.setState({ query: '' })
+        let query = this.state.query
+
+        query = query.replace(/[^A-Za-z_0-9\s]/g, "")
+
+        query.length < 3 ? alert("introduce al menos 3 letras") : this.props.history.push(`/results/${query}`)
+        
+
+        this.setState({ query: '' }) 
 
     }
 
