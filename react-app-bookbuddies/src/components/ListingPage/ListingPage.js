@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
+import Footer from './../Footer/Footer'
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
-import Aside from './../Aside/Aside'
+//import Aside from './../Aside/Aside'
 import ResultsList from './../ResultsList/ResultsList'
 import './ListingPage.css'
 
@@ -94,6 +95,8 @@ class ListingPage extends Component {
 
                     </div>
                 </section>
+
+                <Footer />
 
             </div>
 

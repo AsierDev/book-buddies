@@ -27,33 +27,33 @@ module.exports = {
 
                         !results.length ? results = ["No hay resultados para esta búsqueda"] :
 
-                        results = results.map((book) => {
+                            results = results.map((book) => {
 
-                            book.authors ? book.authors[0] : book.authors = ["Varios Autores"]
+                                book.authors ? book.authors[0] : book.authors = ["Varios Autores"]
 
-                            if (!book.title) {
-                                book.title = "Este libro no cuenta con título"
-                            } else if (book.title.length > 45) {
-                                book.title = book.title.substring(0, 45) + "..."
-                            } else {
-                                book.title
-                            }
-
-
-                            if (!book.description) {
-                                book.description = "Este libro no cuenta con descripción."
-                            } else if (book.description.length > 160) {
-                                book.description = book.description.substring(0, 160) + "..."
-                            } else {
-                                book.description
-                            }
-
-                            !book.thumbnail ? book.thumbnail = defaultPic : book.thumbnail
+                                if (!book.title) {
+                                    book.title = "Este libro no cuenta con título"
+                                } else if (book.title.length > 45) {
+                                    book.title = book.title.substring(0, 45) + "..."
+                                } else {
+                                    book.title
+                                }
 
 
-                            return book
+                                if (!book.description) {
+                                    book.description = "Este libro no cuenta con descripción."
+                                } else if (book.description.length > 200) {
+                                    book.description = book.description.substring(0, 200) + "..."
+                                } else {
+                                    book.description
+                                }
 
-                        })
+                                !book.thumbnail ? book.thumbnail = defaultPic : book.thumbnail
+
+
+                                return book
+
+                            })
 
 
                         resolve(results)
@@ -68,7 +68,7 @@ module.exports = {
 
     retrieveRandom() {
         let randomQuery = random(0, 17)
-        const query = ['posteguillo', 'asimov', 'Stephanie Meyer', 'ken follet', 'arturo perez reverte', 'John Grisham', 'John Boyne', 'saramago', 'j k rowling', 'stephen king','Philip K.Dick', 'Terry Pratchett', 'colleen mccullough', 'manfredi', 'george r r martin', 'Richard Dawkins', 'Yuval Noah Harari', 'Kip Thorne']
+        const query = ['posteguillo', 'asimov', 'Stephanie Meyer', 'ken follet', 'arturo perez reverte', 'John Grisham', 'John Boyne', 'saramago', 'j k rowling', 'stephen king', 'Philip K.Dick', 'Terry Pratchett', 'colleen mccullough', 'manfredi', 'george r r martin', 'Richard Dawkins', 'Yuval Noah Harari', 'Kip Thorne']
 
         return this.retrieveGeneralSearch(query[randomQuery])
     },
@@ -186,11 +186,11 @@ module.exports = {
 
                                 let sum = 0
                                 for (let i = 0; i < book.reviews.length; i++) {
-                                    sum += book.reviews[i].vote 
+                                    sum += book.reviews[i].vote
                                 }
                                 sum /= book.reviews.length
 
-                                
+
                                 book.avRate = !isNaN(sum) ? parseFloat(sum).toFixed(1) : "Sin Votos";
                             }
                             else
@@ -209,14 +209,16 @@ module.exports = {
             })
     },
 
-    addReview(bookId, userId, vote, comment, avRate) {
+    addReview(bookId, userId, vote, comment, bookTitle) {
         return Promise.resolve()
             .then(() => {
                 if (!bookId) throw Error('bookId should exist')
-                return Book.findOneAndUpdate({ id: bookId },
-                    {
+                return Book.findOneAndUpdate({ id: bookId }, 
+                    {    
+                         title: bookTitle ,
+                                        
                         "$push": {
-                            reviews: { user: userId, vote, comment, avRate }
+                            reviews: { user: userId, vote, comment }
                         }
                     }, {
                         new: true
@@ -310,18 +312,11 @@ module.exports = {
 
             .then(() => {
                 if (!id) throw Error('id should be valid')
+                return User.findOne({ _id: id }, { password: 0 }).populate({ path: "User.favorites.id", select: "title" })
+                
 
-                return User.findOne({ _id:id }, {password:0})
-            })    
+            })
     }
-
-
-
-
-
-
-
-
 
 
 }

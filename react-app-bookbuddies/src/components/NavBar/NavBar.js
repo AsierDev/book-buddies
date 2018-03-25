@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 
 import './NavBar.css'
 import bookBuddiesApi from './../../api/bookBuddiesApi'
@@ -13,20 +13,17 @@ class NavBar extends Component {
         this.state = {
             username: "",
             query: "",
-           
+            burger: false
+
         }
     }
 
     componentWillMount() {
         const userId = sessionStorage.getItem('userId')
 
-        console.log(userId)
-
-
-
         bookBuddiesApi.retrieveUser(userId)
             .then((user) => {
-                console.log(user)
+
                 this.setState({ username: user.data.data.username })
             })
 
@@ -55,8 +52,8 @@ class NavBar extends Component {
     }
 
     toggleBurger = () => {
-        this.setState({burger: !this.state.burger })
-    } 
+        this.setState({ burger: !this.state.burger })
+    }
 
     render() {
         return (
@@ -67,14 +64,14 @@ class NavBar extends Component {
                             <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
                         </a>
 
-                        <span 
-                        className="navbar-burger burger has-text-light" 
-                        data-target="navbarMenuHeroA" 
-                        onClick={
-                            e => {
-                                e.preventDefault()
-                                this.toggleBurger()
-                            }}>
+                        <span
+                            className="navbar-burger burger has-text-light"
+                            data-target="navbarMenuHeroA"
+                            onClick={
+                                e => {
+                                    e.preventDefault()
+                                    this.toggleBurger()
+                                }}>
                             <span />
                             <span />
                             <span />
@@ -82,7 +79,7 @@ class NavBar extends Component {
 
                     </div>
 
-                    <div id="navbarMenuHero" className="navbar-menu has-text-centered " >
+                    <div id="navbarMenuHero" className={this.state.burger ? "navbar-menu has-text-centered is-active" : "navbar-menu has-text-centered "} >
                         <div className="navbar-end">
 
                             <span className="navbar-item is-size-5 has-text-light">
@@ -93,13 +90,13 @@ class NavBar extends Component {
                                             e.preventDefault()
                                             this.handleSubmit()
                                         }}>
-                                    <input                                      
-                                        className="navInput input is-primary  is-rounded"
-                                        type="text"
-                                        placeholder="Search"
-                                        onChange={(e) => this.handleChange(e.target.value)}
-                                        required
-                                    />
+                                        <input
+                                            className="navInput input is-primary  is-rounded"
+                                            type="text"
+                                            placeholder="Search"
+                                            onChange={(e) => this.handleChange(e.target.value)}
+                                            required
+                                        />
                                     </form>
                                 </div>
 
@@ -246,19 +243,53 @@ class NavBar extends Component {
                                     </div>
                                 </div>
 
-                                <a className="navbar-item is-size-5 has-text-light">
-                                    {this.state.username}
+                                <div className="dropdown is-hoverable is-right">
+                                    <div className="dropdown-trigger">
+                                        <button className="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                            <span className="dropdownTitle"> {this.state.username}</span>
+                                            <span className="icon is-small">
+                                                <i className="fa fa-angle-down dropdownTitle" aria-hidden="true" />
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div className="dropdown-menu" id="dropdown-menu4" role="menu">
+                                        <div className="dropdown-content">
+                                            <div className="dropdown-item">
 
-                                </a>
+                                                <ul className="menu-list is-size-5-desktop has-text-weight-normal">
+                                                    <li>
+                                                        <a
+                                                            data="sports"
+                                                            onClick={e => {
+                                                                e.preventDefault()
+                                                                this.props.history.push('/user')
 
+                                                            }}
+                                                        >Area Usuario
+                                                        </a>
+                                                    </li>
 
+                                                    <li>
+                                                        <a
+                                                            data="self-help"
+                                                            onClick={e => {
+                                                                e.preventDefault()
+                                                                this.props.history.push('/')
 
+                                                            }}
+                                                        >Cerrar Sesión
+                                                        </a>
+                                                    </li>
+                                                   
+                                                </ul>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </span>
-                            {/* <a className="navbar-item is-size-5 has-text-light">
-                                Top Rated
-                            </a> */}
+
                         </div>
                     </div>
                 </div>

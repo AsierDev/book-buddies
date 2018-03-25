@@ -1,6 +1,8 @@
- .bookCovers {
-   height: 180px;
-   width: 128px    
+  .bookCovers {
+    height: 180px;
+    min-width: 120px;
+    max-width: 150px;   
 } 
+ 
 
 

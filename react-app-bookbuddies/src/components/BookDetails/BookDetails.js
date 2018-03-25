@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Footer from './../Footer/Footer'
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
 import './bookPreview.css'
@@ -36,8 +36,10 @@ class BookDetails extends Component {
         const bookId = this.props.match.params.id
         const vote = this.state.rating
         const comment = this.state.comment
+        const bookTitle = this.state.results.title
+        console.log( bookTitle)
 
-        booksBuddiesApi.addReview(bookId, userId, vote, comment)
+        booksBuddiesApi.addReview(bookId, userId, vote, comment, bookTitle)
         .then(() => {
             
             this.retrieveBook(this.props.match.params.id)
@@ -218,12 +220,14 @@ class BookDetails extends Component {
                                 <article className="box content">
 
                                     {results.reviews && results.reviews.length ?
-
+    
                                         results.reviews.map(review =>
-
+                                            
                                             <div className="content-body" key={review._id}>
-                                                <div className="box">
 
+                                            {review.comment ? 
+                                            
+                                                <div className="box">
                                                     <p>
                                                         {review.comment}
                                                     </p>
@@ -231,6 +235,8 @@ class BookDetails extends Component {
                                                         {review.user.username}
                                                     </p>
                                                 </div>
+                                            : null
+                                        }
                                             </div>
                                         )
                                         :
@@ -365,11 +371,13 @@ class BookDetails extends Component {
 
                     </main>
 
+                <Footer />      
                 </div>
 
 
 
                 : null
+
 
         )
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
 import bookBuddiesApi from './../../api/bookBuddiesApi'
+import Footer from './../Footer/Footer'
 
 import './MainPage.css'
 
@@ -93,7 +94,7 @@ class MainPage extends Component {
 
                 <Carousel onLanding={this.state.results}/>
 
-
+                <Footer />
             </div>
 
         )

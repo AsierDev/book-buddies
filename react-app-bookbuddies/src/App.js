@@ -18,6 +18,7 @@ import UserArea from './components/UserArea/UserArea'
 
 
 
+
 class App extends Component {
 
   render() {
@@ -49,6 +50,7 @@ class App extends Component {
 
           </div>
         </HashRouter>
+        
       </div>
     );
   }

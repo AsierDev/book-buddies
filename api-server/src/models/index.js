@@ -46,7 +46,6 @@ const Review = new Schema({
     },
     vote: Number,
     comment: String,
-    avRate: Number
 })
 
 const Book = new Schema({
@@ -55,7 +54,8 @@ const Book = new Schema({
         required: true,
         unique: true
     },
-    reviews: [Review]
+    reviews: [Review],
+    title: String,
 })
 
 module.exports = {

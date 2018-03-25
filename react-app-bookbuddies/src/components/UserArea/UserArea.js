@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
 import NavBar from './../NavBar/NavBar'
+import booksBuddiesApi from './../../api/bookBuddiesApi'
+import Footer from './../Footer/Footer'
 import './UserArea.css'
+
 
 
 class UserArea extends Component {
@@ -9,15 +12,25 @@ class UserArea extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            user: undefined
         }
     }
 
+    componentWillMount() {
+        const userId = sessionStorage.getItem("userId")
+        booksBuddiesApi.retrieveUser(userId)
+            .then(user =>
 
+                 this.setState({
+                    user: user.data.data
+                }) 
+            )
+    }
 
     render() {
 
-
+        const {user} = this.state
+        console.log(user)
         return (
             <div>
 
@@ -32,21 +45,21 @@ class UserArea extends Component {
                     </div>
                 </section>
 
+                 {this.state.user ?    
                 <section className="container">
                     <div className="box userBox">
                         <div className="columns is-centered">
                             <div className="column is-one-fifth">
                                 <figure className="userPic">
-                                    
-                                        <img className="image is-128x128" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile" />
-                                    
+
+                                    <img className="image is-128x128" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile" />
+
                                 </figure>
                             </div>
                             <div className="column is-three-fifths">
                                 <div className="content">
                                     <div className="has-text-centered-mobile">
-                                        <h2 className="nameUser">Nombre de Usuario</h2>
-                                        <h5 className="is-italic"><em> usuario@usuario.com </em></h5>
+                                        <h2 className="nameUser">{user.username}</h2>
                                         <br />
                                     </div>
                                     <h6 className="has-text-weight-semibold">Un poco sobre mi</h6>
@@ -60,16 +73,20 @@ class UserArea extends Component {
                                 <div className="columns is-mobile">
 
                                     <div className="column  has-text-centered hightlights">
-                                        <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">10</p>
+                                        <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">
+                                        {user.favorites.length}
+                                        </p>
                                         <p>Favoritos</p>
                                     </div>
                                     <div className="column has-text-centered hightlights">
-                                        <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">3</p>
+                                        <p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">
+                                        {user.reviews.length}
+                                        </p>
                                         <p>Opiniones</p>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <hr />
                         <footer className="columns ">
@@ -90,7 +107,7 @@ class UserArea extends Component {
 
                             </div>
 
-                            <div className=" column"> 
+                            <div className=" column">
                                 <div className="content">
                                     <h4>Comentarios</h4><hr />
                                     <div className="panel list-group">
@@ -106,7 +123,7 @@ class UserArea extends Component {
 
                             </div>
 
-                            <div className=" column"> 
+                            <div className=" column">
                                 <div className="content">
                                     <h4>Wishlist</h4><hr />
                                     <div className="panel list-group">
@@ -125,7 +142,8 @@ class UserArea extends Component {
                         </footer>
                     </div>
                 </section>
-
+                : null}
+                <Footer />
             </div>
         )
     }

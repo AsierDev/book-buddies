@@ -40,14 +40,14 @@ class ResultsList extends Component {
                         <div className="box content secondColumn" >
                             <div className="notification is-dark">
                                 <div className="box">
-                                    <article className="media">
-                                        <div className="media-left">
-                                            <figure className="image ">
-                                                <img src={_results.thumbnail} className="bookCovers image " alt="logo" />
+                                    <article className="columns">
+                                        <div className="column is ">
+                                            <figure className="image imageResults">
+                                                <img src={_results.thumbnail} className="bookCovers image  " alt="logo" />
                                             </figure>
                                         </div>
 
-                                        <div className="media-content">
+                                        <div className="column is-three-quarters">
                                             <div className="content">
                                                 <p>
                                                     <strong className="is-size-4">{_results.title}</strong>
@@ -61,8 +61,8 @@ class ResultsList extends Component {
                                                     <span className="">{_results.description} </span>
                                                 </p>
                                             </div>
-                                            <nav className="level is-mobile">
-                                                <div className="level-left">
+                                           {/*  <nav className="level is-mobile">
+                                                <div className="level-item">
 
                                                     <span className="level-item">
                                                         <span className="icon is-small">
@@ -75,7 +75,7 @@ class ResultsList extends Component {
                                                         </span>
                                                     </span>
                                                 </div>
-                                            </nav>
+                                            </nav> */}
                                         </div>
                                     </article>
                                 </div>

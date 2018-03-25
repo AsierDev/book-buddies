@@ -1,0 +1,12 @@
+.footer {
+    margin-top: 3rem;
+
+}
+
+.socialLinks {
+    padding: 0 2rem;
+}
+
+.socialLinks a:hover {
+    color: white
+}
