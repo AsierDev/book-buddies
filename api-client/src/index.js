@@ -32,8 +32,8 @@ const bookBuddiesApi = {
         return axios.post(`${this._url()}/book/${bookId}/review`, { userId, vote, comment, bookTitle })
     },
 
-    addBookToList: function (bookId, userId, list) {
-        return axios.put(`${this._url()}/book/${bookId}/add`, { userId, list })
+    addBookToList: function (bookId, userId, list, bookTitle) {
+        return axios.put(`${this._url()}/book/${bookId}/add`, { userId, list, bookTitle })
     },
 
     registerUser: function (name, username, email, password) {

@@ -80,8 +80,9 @@ class BookDetails extends Component {
 
         const userId = sessionStorage.getItem("userId")
         const bookId = this.props.match.params.id
+        const bookTitle = this.state.results.title
 
-        booksBuddiesApi.addBookToList(bookId, userId, list)
+        booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
     }
 
 

@@ -23,12 +23,14 @@ const User = new Schema({
     favorites: [
         {
             type: ObjectId,
+            title: String,
             ref: 'Book'
         }
     ],
     wishlist: [
         {
             type: ObjectId,
+            title: String,
             ref: 'Book'
         }
     ],

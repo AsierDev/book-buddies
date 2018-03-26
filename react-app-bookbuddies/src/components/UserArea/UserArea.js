@@ -111,13 +111,15 @@ class UserArea extends Component {
                                 <div className="content">
                                     <h4>Comentarios</h4><hr />
                                     <div className="panel list-group">
-                                        <a className="panel-block list-group-item ">1. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">2. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">3. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">4. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">5. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">6. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">7. Lorem ipsum dolor sit amet.</a>
+                                            {
+                                                this.state.user.reviews ? this.state.user.reviews.map(comment => 
+                                                    
+                                                <a className="panel-block list-group-item " key={comment.id}>
+                                                    {comment.title} 
+                                                </a>
+                                                ) : null 
+                                            }
+                                        
                                     </div>
                                 </div>
 

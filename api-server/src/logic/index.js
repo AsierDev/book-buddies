@@ -199,10 +199,13 @@ module.exports = {
                 ]
 
                 return Promise.all(promises)
+
+                    .then(() => User.populate(book.reviews, { path: "user", select: "username" }))
                     .then(() => book)
-                    .then(book => {
-                        return User.populate(book.reviews, { path: "user", select: "username" }).then(() => book)
-                    })
+                /*  .then(() => book)
+                 .then(book => {
+                     return User.populate(book.reviews, { path: "user", select: "username" }).then(() => book)
+                 }) */
 
 
 
@@ -213,25 +216,23 @@ module.exports = {
         return Promise.resolve()
             .then(() => {
                 if (!bookId) throw Error('bookId should exist')
-                return Book.findOneAndUpdate({ id: bookId }, 
-                    {    
-                         title: bookTitle ,
-                                        
+                return Book.findOneAndUpdate({ id: bookId },
+                    {
+                        title: bookTitle,
+
                         "$push": {
                             reviews: { user: userId, vote, comment }
                         }
-                    }, {
-                        new: true
                     }
                 )
             })
-            .then(() => {
+            .then((book) => {
                 if (!userId) throw Error('userId should exist')
                 return User.findOneAndUpdate({ _id: userId },
                     {
                         "$push": {
 
-                            reviews: { _id: bookId }
+                            reviews: { _id: book._id }
                         }
                     }, {
                         new: true
@@ -240,20 +241,27 @@ module.exports = {
             })
     },
 
-    addBookToList(bookId, userId, list) {
+    addBookToList(bookId, userId, list, bookTitle) {
         return Promise.resolve()
 
             .then(() => {
-                if (!list) throw Error('list should be valid')
                 if (!userId) throw Error('user should exist')
                 if (!bookId) throw Error('bookId should exist')
+
+                if (!list) throw Error('list should be valid')
                 let _list
+
+                return Book.findOne({ id: bookId })
+            })
+
+            .then(book => {
+
                 if (list == "wishlist") {
                     return User.findOneAndUpdate({ _id: userId },
                         {
                             "$push": {
 
-                                wishlist: { _id: bookId }
+                                wishlist: book._id
                             }
                         }, {
                             new: true
@@ -267,7 +275,8 @@ module.exports = {
                         {
                             "$push": {
 
-                                favorites: { _id: bookId }
+                                favorites: book._id
+
                             }
                         }, {
                             new: true
@@ -276,7 +285,6 @@ module.exports = {
 
                 }
             })
-
     },
 
     createUser(name, username, email, password) {
@@ -312,9 +320,7 @@ module.exports = {
 
             .then(() => {
                 if (!id) throw Error('id should be valid')
-                return User.findOne({ _id: id }, { password: 0 }).populate({ path: "User.favorites.id", select: "title" })
-                
-
+                return User.findOne({ _id: id }, { password: 0 }).populate({ path: 'reviews' }).populate({ path: 'favorites' }).populate({ path: 'wishlist' })
             })
     }
 
