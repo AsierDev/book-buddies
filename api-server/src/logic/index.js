@@ -163,9 +163,12 @@ module.exports = {
 
                 const promises = [
                     new Promise((resolve, reject) => {
-                        books.lookup(id, (error, results) => {
-                            if (error) return reject(error)
 
+                        books.lookup(id, (error, results) => {
+
+                            if (error) return reject(error)
+                            console.log(results)
+                            bookTitle = results.title
                             googleBookProps.forEach(prop => {
 
 
@@ -179,6 +182,7 @@ module.exports = {
                             resolve()
                         })
                     }),
+
                     Book.findOne({ id })
                         .then(_book => {
                             if (_book) {
@@ -193,8 +197,28 @@ module.exports = {
 
                                 book.avRate = !isNaN(sum) ? parseFloat(sum).toFixed(1) : "Sin Votos";
                             }
-                            else
-                                Book.create({ id })
+                            else {
+
+                                let bookTitle
+    
+                                return books.lookup(id, (error, results) => {
+    
+                                        if (error) return reject(error)
+                                       
+                                        bookTitle = results.title
+    
+                                        googleBookProps.forEach(prop => {
+    
+                                            if (!results[prop])
+                                                results[prop] = ["Sin datos"]
+    
+                                            book[prop] = results[prop]
+                                        })
+                                    return Book.create({ id, title: bookTitle })
+                                    })
+    
+                            }
+                            
                         })
                 ]
 
@@ -202,15 +226,12 @@ module.exports = {
 
                     .then(() => User.populate(book.reviews, { path: "user", select: "username" }))
                     .then(() => book)
-                /*  .then(() => book)
-                 .then(book => {
-                     return User.populate(book.reviews, { path: "user", select: "username" }).then(() => book)
-                 }) */
-
 
 
             })
     },
+
+
 
     addReview(bookId, userId, vote, comment, bookTitle) {
         return Promise.resolve()
