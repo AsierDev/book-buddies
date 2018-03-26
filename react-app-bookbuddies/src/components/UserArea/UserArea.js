@@ -27,6 +27,11 @@ class UserArea extends Component {
             )
     }
 
+    goToBook(id) {
+
+        this.props.history.push(`/book/${id}`)
+    }
+
     render() {
 
         const {user} = this.state
@@ -95,13 +100,22 @@ class UserArea extends Component {
                                 <div className="content">
                                     <h4>Favoritos</h4><hr />
                                     <div className="panel list-group">
-                                        <a className="panel-block list-group-item ">1. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">2. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">3. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">4. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">5. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">6. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">7. Lorem ipsum dolor sit amet.</a>
+                                            {
+                                                this.state.user.favorites ? this.state.user.favorites.map(favorite =>
+
+                                                    <a 
+                                                    onClick={e => {
+                                                        e.preventDefault()
+                                                        this.goToBook(favorite.id)
+
+                                                    }}
+                                                    className="panel-block list-group-item " 
+                                                    key={favorite._id}
+                                                    >
+                                                        {favorite.title}
+                                                    </a>
+                                                ) : "Este usuario no ha guardado libros en favoritos todavia"
+                                            }
                                     </div>
                                 </div>
 
@@ -114,10 +128,18 @@ class UserArea extends Component {
                                             {
                                                 this.state.user.reviews ? this.state.user.reviews.map(comment => 
                                                     
-                                                <a className="panel-block list-group-item " key={comment.id}>
+                                                <a
+                                                onClick={e => {
+                                                    e.preventDefault()
+                                                    this.goToBook(comment.id)
+
+                                                }} 
+                                                className="panel-block list-group-item " 
+                                                key={comment._id}
+                                                >
                                                     {comment.title} 
                                                 </a>
-                                                ) : null 
+                                                ) : "Este usuario no ha realizado comentarios todavia" 
                                             }
                                         
                                     </div>
@@ -129,13 +151,22 @@ class UserArea extends Component {
                                 <div className="content">
                                     <h4>Wishlist</h4><hr />
                                     <div className="panel list-group">
-                                        <a className="panel-block list-group-item ">1. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">2. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">3. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">4. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item ">5. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">6. Lorem ipsum dolor sit amet.</a>
-                                        <a className="panel-block list-group-item">7. Lorem ipsum dolor sit amet.</a>
+                                            {
+                                                this.state.user.wishlist ? this.state.user.wishlist.map(wish =>
+
+                                                    <a 
+                                                    className="panel-block list-group-item " 
+                                                    key={wish._id}
+                                                    onClick={e => {
+                                                        e.preventDefault()
+                                                        this.goToBook(wish.id)
+
+                                                    }}
+                                                    >
+                                                        {wish.title}
+                                                    </a>
+                                                ) : "Este usuario no ha guardado libros en favoritos todavia"
+                                            }
                                     </div>
                                 </div>
 
