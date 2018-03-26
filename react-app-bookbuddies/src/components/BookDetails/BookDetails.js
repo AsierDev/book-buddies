@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom"
 import Footer from './../Footer/Footer'
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
@@ -85,12 +86,21 @@ class BookDetails extends Component {
         booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
     }
 
+    retrieveWriter(name) {
+        const author = name.toString()
+       
+        this.props.history.push(`/results/${author}`)
+        
+    }
+
 
 
     render() {
 
         
         const { results } = this.state
+
+        console.log(results)
         
         return (
             results ?
@@ -103,7 +113,9 @@ class BookDetails extends Component {
                                     {results.title}
                                 </h1>
                                 <h2 className="subtitle">
-                                    {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors[0]}
+                                    {results.authors.length > 1 ? 
+                                        `${results.authors[0]} & ${results.authors[1]}` : results.authors[0]
+                                        }           
                                 </h2>
                             </div>
                         </div>
@@ -123,7 +135,16 @@ class BookDetails extends Component {
                                         <div className="basic-details">
                                             <h2>{results.title}</h2>
                                             <h5 className="is-italic">
+                                            <a
+                                            className="has-text-grey-dark" 
+                                            onClick={e => {
+                                                e.preventDefault()
+                                                this.retrieveWriter(results.authors) 
+
+                                            }} 
+                                            >
                                                 <em> {results.authors.length > 1 ? `${results.authors[0]} & ${results.authors[1]}` : results.authors}</em>
+                                            </a>    
                                             </h5>
                                             <br />
                                             <p>
@@ -388,4 +409,4 @@ class BookDetails extends Component {
     }
 }
 
-export default BookDetails
+export default withRouter(BookDetails)
