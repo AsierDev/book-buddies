@@ -4,6 +4,7 @@ import Footer from './../Footer/Footer'
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
 import './bookPreview.css'
+import swal from 'sweetalert2'
 
 
 class BookDetails extends Component {
@@ -122,7 +123,8 @@ class BookDetails extends Component {
 		const bookId = this.props.match.params.id
 
 		if (this.state.userComments.includes(bookId)) {
-			alert('Ya has comentado este libro')
+
+			swal('Ya has comentado este libro')
 		} else {
 
 		this.setState({
@@ -140,7 +142,7 @@ class BookDetails extends Component {
 
 
 		if ((list === "favoritos" && this.state.userFavorites.includes(bookId)) || (list === "wishlist" && this.state.userWished.includes(bookId))) {
-			alert("Libro ya está en la lista")
+			swal("Ya tienes el libro en tu lista")
 		} else {
 
 			booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
