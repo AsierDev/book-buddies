@@ -18,15 +18,15 @@ class Footer extends Component {
                             <br /> <br />
 
                             <span className="icon is-size-4 socialLinks">
-                                <a href="https://github.com/AsierDev" target="_blank" className="fa fa-github"></a>
+                                <a href="https://github.com/AsierDev" target="_blank" rel="noopener noreferrer" className="fa fa-github" alt="social icons"> </a>
                             </span>
 
                             <span className="icon is-size-4 socialLinks">
-                                <a href="https://www.linkedin.com/in/asier-p/" target="_blank" className="fa fa-linkedin"></a>
+                                <a href="https://www.linkedin.com/in/asier-p/" target="_blank" rel="noopener noreferrer" className="fa fa-linkedin" alt="social icons"> </a>
                             </span>
 
                             <span className="icon is-size-4 socialLinks">
-                                <a href="https://twitter.com/AsierDev" target="_blank" className="fa fa-twitter"></a>
+                                <a href="https://twitter.com/AsierDev" target="_blank" rel="noopener noreferrer" className="fa fa-twitter" alt="social icons"> </a>
                             </span>
 
 

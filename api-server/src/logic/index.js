@@ -6,7 +6,7 @@ const random = require('lodash.random');
 
 const defaultPic = 'http://ring49magic.com/blog/wp-content/plugins/google-bookshelves/images/no_cover_thumb.png'
 
-const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishedDate', 'thumbnail', 'title']
+const googleBookProps = ['authors', 'categories', 'description', 'id', 'industryIdentifiers', 'pageCount', 'publishedDate', 'thumbnail', 'title', ]
 
 module.exports = {
 

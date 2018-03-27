@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { withRouter, Link } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 import './NavBar.css'
 import bookBuddiesApi from './../../api/bookBuddiesApi'

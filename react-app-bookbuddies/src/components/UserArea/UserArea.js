@@ -101,7 +101,7 @@ class UserArea extends Component {
                                     <h4>Favoritos</h4><hr />
                                     <div className="panel list-group">
                                             {
-                                                this.state.user.favorites ? this.state.user.favorites.map(favorite =>
+                                                this.state.user.favorites.length ? this.state.user.favorites.map(favorite =>
 
                                                     <a 
                                                     onClick={e => {
@@ -126,7 +126,7 @@ class UserArea extends Component {
                                     <h4>Comentarios</h4><hr />
                                     <div className="panel list-group">
                                             {
-                                                this.state.user.reviews ? this.state.user.reviews.map(comment => 
+                                                this.state.user.reviews.length ? this.state.user.reviews.map(comment => 
                                                     
                                                 <a
                                                 onClick={e => {
@@ -152,7 +152,7 @@ class UserArea extends Component {
                                     <h4>Wishlist</h4><hr />
                                     <div className="panel list-group">
                                             {
-                                                this.state.user.wishlist ? this.state.user.wishlist.map(wish =>
+                                                this.state.user.wishlist.length ? this.state.user.wishlist.map(wish =>
 
                                                     <a 
                                                     className="panel-block list-group-item " 
