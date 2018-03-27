@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
+import ScrollToTop from 'react-scroll-up'
 
 import './ResultsList.css'
 
@@ -123,7 +124,7 @@ class ResultsList extends Component {
                                     
                                         </div>
                                     </article>
-                                             <nav className="level is-mobile">
+                                            {/*  <nav className="level is-mobile">
                                                 <div className="level-left listIcons">
 
                                                     <span className="level-item">
@@ -137,12 +138,16 @@ class ResultsList extends Component {
                                                         </span>
                                                     </span>
                                                 </div>
-                                            </nav> 
+                                            </nav>  */}
                                 </div>
                             </div>
                         </div>
                     </a>
                 )}
+
+                <ScrollToTop showUnder={160}>
+                    <a className="button is-primary is-rounded is-outlined"> &#x21E7; </a>
+                </ScrollToTop>
             </div>
         )
     }

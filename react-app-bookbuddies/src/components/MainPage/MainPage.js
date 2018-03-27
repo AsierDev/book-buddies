@@ -6,7 +6,7 @@ import Footer from './../Footer/Footer'
 import './MainPage.css'
 
 import NavBar from './../NavBar/NavBar'
-import Carousel from './../Carousel/Carousel'
+import Carousel from './Carousel/Carousel'
 
 
 class MainPage extends Component {
