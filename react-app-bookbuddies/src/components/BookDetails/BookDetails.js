@@ -16,7 +16,9 @@ class BookDetails extends Component {
 			rating: undefined,
 			comment: undefined,
 			modal: false,
-			userFavorites: []
+			userFavorites: [],
+			userWished: [],
+			userComments: []
 		}
 	}
 
@@ -39,18 +41,23 @@ class BookDetails extends Component {
 		const vote = this.state.rating
 		const comment = this.state.comment
 		const bookTitle = this.state.results.title
-		console.log(bookTitle)
+
 
 		booksBuddiesApi.addReview(bookId, userId, vote, comment, bookTitle)
 			.then(() => {
 
 				this.retrieveBook(this.props.match.params.id)
+				this.retrieveUser()
 
 			})
 			.then(
 				this.handleModal()
 
 			)
+
+
+
+
 
 	}
 
@@ -65,22 +72,36 @@ class BookDetails extends Component {
 		const userId = sessionStorage.getItem("userId")
 
 		let favorites = []
+		let wished = []
+		let comments = []
 
 		booksBuddiesApi.retrieveUser(userId)
-			.then(_user =>
+			.then(_user => {
+
 
 				_user.data.data.favorites.map(fav => {
 					return favorites.push(fav.id)
 				})
+
+				_user.data.data.wishlist.map(wish => {
+					return wished.push(wish.id)
+				})
+
+				_user.data.data.reviews.map(comment => {
+					return comments.push(comment.id)
+				})
+			}
+
 			)
 
 			.then(() =>
 
 				this.setState({
-					userFavorites: favorites
+					userFavorites: favorites,
+					userWished: wished,
+					userComments: comments
 				})
 			)
-
 
 	}
 
@@ -98,9 +119,16 @@ class BookDetails extends Component {
 
 	handleModal = (e) => {
 
+		const bookId = this.props.match.params.id
+
+		if (this.state.userComments.includes(bookId)) {
+			alert('Ya has comentado este libro')
+		} else {
+
 		this.setState({
 			modal: !this.state.modal,
 		})
+	}
 
 	}
 
@@ -110,7 +138,15 @@ class BookDetails extends Component {
 		const bookId = this.props.match.params.id
 		const bookTitle = this.state.results.title
 
-		booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
+
+		if ((list === "favoritos" && this.state.userFavorites.includes(bookId)) || (list === "wishlist" && this.state.userWished.includes(bookId))) {
+			alert("Libro ya está en la lista")
+		} else {
+
+			booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
+				.then(() => this.retrieveUser())
+		}
+
 	}
 
 	retrieveWriter(name) {
@@ -124,10 +160,7 @@ class BookDetails extends Component {
 
 	render() {
 
-		const { results, userFavorites } = this.state
-
-		console.log(results)
-		console.log(userFavorites)
+		const { results, userFavorites, userWished, userComments } = this.state
 
 		return (
 			results ?
@@ -193,10 +226,12 @@ class BookDetails extends Component {
 
 											<p className="is-size-2-desktop is-size-3-tablet is-size-4-mobile">{results.avRate ? results.avRate : "Sin votos"}</p>
 
-											<p>Rating</p>
+											<p>Puntuación Media</p>
 										</div>
+
 										<br />
 										<div>
+
 											<div className="has-text-centered">
 
 
@@ -207,10 +242,10 @@ class BookDetails extends Component {
 																e.preventDefault()
 																this.sendToList('favoritos')
 															}}
-															className="button is-primary is-outlined">
-															Añadido
-														</a> 
-														 :
+															className="button is-danger">
+															Añadido a Favoritos
+														</a>
+														:
 														<a
 															onClick={e => {
 																e.preventDefault()
@@ -223,36 +258,64 @@ class BookDetails extends Component {
 												}
 
 
-
-
-
 											</div>
+
 											<br />
+
 											<div className="has-text-centered">
 
-												<a
-													onClick={e => {
-														e.preventDefault()
-														this.sendToList('wishlist')
-													}}
-													className="button is-primary is-outlined"
-												>Añadir a Wishlist
-                                                </a>
-
+												{
+													userWished.includes(results.id) ?
+														<a
+															onClick={e => {
+																e.preventDefault()
+																this.sendToList('favoritos')
+															}}
+															className="button is-danger">
+															Añadido en la Wishlist
+														</a>
+														:
+														<a
+															onClick={e => {
+																e.preventDefault()
+																this.sendToList('wishlist')
+															}}
+															className="button is-primary is-outlined"
+														>Añadir a Wishlist
+                                                		</a>
+												}
 
 											</div>
+
 											<br />
+
 											<div className="has-text-centered">
-												<a
-													data-target="modal"
-													onClick={e => {
-														e.preventDefault()
-														this.handleModal()
-													}}
-													className="button is-primary is-outlined"
-												>Añadir Comentario
-                                                </a>
+
+												{
+													userComments.includes(results.id) ?
+														<a
+															data-target="modal"
+															onClick={e => {
+																e.preventDefault()
+																this.handleModal()
+															}}
+															className="button is-danger "
+														> Ya comentado
+                                                		</a>
+														:
+														<a
+															data-target="modal"
+															onClick={e => {
+																e.preventDefault()
+																this.handleModal()
+															}}
+															className="button is-primary is-outlined"
+														>Añadir Comentario
+                                                		</a>
+												}
+
 											</div>
+
 										</div>
 									</div>
 								</div>
@@ -412,7 +475,7 @@ class BookDetails extends Component {
 														<div className="media-content">
 															<div className="field">
 																<p className="control">
-																	<textarea className="textarea" placeholder="Add a comment..." defaultValue={""} onChange={e => { this.handleComment(e.target.value) }} />
+																	<textarea required className="textarea" placeholder="Add a comment..." defaultValue={""} onChange={e => { this.handleComment(e.target.value) }} />
 																</p>
 															</div>
 

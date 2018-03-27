@@ -42,8 +42,8 @@ module.exports = {
 
                                 if (!book.description) {
                                     book.description = "Este libro no cuenta con descripción."
-                                } else if (book.description.length > 200) {
-                                    book.description = book.description.substring(0, 200) + "..."
+                                } else if (book.description.length > 300) {
+                                    book.description = book.description.substring(0, 300) + "..."
                                 } else {
                                     book.description
                                 }
@@ -104,8 +104,8 @@ module.exports = {
 
                             if (!book.description) {
                                 book.description = "Este libro no cuenta con descripción."
-                            } else if (book.description.length > 160) {
-                                book.description = book.description.substring(0, 160) + "..."
+                            } else if (book.description.length > 300) {
+                                book.description = book.description.substring(0, 300) + "..."
                             } else {
                                 book.description
                             }
@@ -160,8 +160,8 @@ module.exports = {
 
                             if (!book.description) {
                                 book.description = "Este libro no cuenta con descripción."
-                            } else if (book.description.length > 160) {
-                                book.description = book.description.substring(0, 160) + "..."
+                            } else if (book.description.length > 300) {
+                                book.description = book.description.substring(0, 300) + "..."
                             } else {
                                 book.description
                             }

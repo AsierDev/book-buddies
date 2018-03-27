@@ -4,7 +4,7 @@ import Footer from './../Footer/Footer'
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
 //import Aside from './../Aside/Aside'
-import ResultsList from './../ResultsList/ResultsList'
+import ResultsList from './ResultsList/ResultsList'
 import './ListingPage.css'
 
 class ListingPage extends Component {
@@ -88,8 +88,6 @@ class ListingPage extends Component {
 
                 <section className="container-fluid">
                     <div className="columns is-centered">
-
-                        {/* <Aside /> */}
 
                         <ResultsList onSearch={this.state.results} />
 

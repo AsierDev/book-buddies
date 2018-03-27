@@ -8,7 +8,10 @@ class ResultsList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: []
+            results: [],
+            userFavorites: [],
+            userWished: [],
+            userComments: []
         }
     }
 
@@ -24,6 +27,61 @@ class ResultsList extends Component {
 
     }
 
+  /*   sendToList = (list) => {
+
+        const userId = sessionStorage.getItem("userId")
+        const bookId = 
+        const bookTitle =  
+
+
+        if ((list === "favoritos" && this.state.userFavorites.includes(bookId)) || (list === "wishlist" && this.state.userWished.includes(bookId))) {
+            alert("Libro ya está en la lista")
+        } else {
+
+            booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
+                .then(() => this.retrieveUser())
+        }
+
+    }
+
+    retrieveUser = () => {
+
+        const userId = sessionStorage.getItem("userId")
+
+        let favorites = []
+        let wished = []
+        let comments = []
+
+        booksBuddiesApi.retrieveUser(userId)
+            .then(_user => {
+
+
+                _user.data.data.favorites.map(fav => {
+                    return favorites.push(fav.id)
+                })
+
+                _user.data.data.wishlist.map(wish => {
+                    return wished.push(wish.id)
+                })
+
+                _user.data.data.reviews.map(comment => {
+                    return comments.push(comment.id)
+                })
+            }
+
+            )
+
+            .then(() =>
+
+                this.setState({
+                    userFavorites: favorites,
+                    userWished: wished,
+                    userComments: comments
+                })
+            )
+
+    }
+ */
     render() {
 
         console.log(this.state.results)
@@ -40,6 +98,7 @@ class ResultsList extends Component {
                         <div className="box content secondColumn" >
                             <div className="notification is-dark">
                                 <div className="box">
+                                    
                                     <article className="columns">
                                         <div className="column is ">
                                             <figure className="image imageResults">
@@ -61,23 +120,24 @@ class ResultsList extends Component {
                                                     <span className="">{_results.description} </span>
                                                 </p>
                                             </div>
-                                           {/*  <nav className="level is-mobile">
-                                                <div className="level-item">
+                                    
+                                        </div>
+                                    </article>
+                                             <nav className="level is-mobile">
+                                                <div className="level-left listIcons">
 
                                                     <span className="level-item">
-                                                        <span className="icon is-small">
+                                                        <span className="icon is-size-4">
                                                             <i className="fa fa-star" />
                                                         </span>
                                                     </span>
                                                     <span className="level-item">
-                                                        <span className="icon is-small">
+                                                        <span className="icon is-size-4">
                                                             <i className="fa fa-heart" />
                                                         </span>
                                                     </span>
                                                 </div>
-                                            </nav> */}
-                                        </div>
-                                    </article>
+                                            </nav> 
                                 </div>
                             </div>
                         </div>

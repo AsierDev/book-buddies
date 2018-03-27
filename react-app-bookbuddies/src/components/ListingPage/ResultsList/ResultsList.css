@@ -3,6 +3,16 @@
     min-width: 120px;
     max-width: 150px;   
 } 
+
+.listIcons {
+  margin-left: auto;
+  margin-right: 10%;
+ 
+}
+
+.listIcons .level-item {
+  margin-left: 2rem
+}
  
 
 
