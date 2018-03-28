@@ -36,8 +36,8 @@ const bookBuddiesApi = {
         return axios.put(`${this._url()}/book/${bookId}/add`, { userId, list, bookTitle })
     },
 
-    registerUser: function (name, username, email, password) {
-        return axios.post(`${this._url()}/user`, { name, username, email, password })
+    registerUser: function (name, username, email, password, description, picture) {
+        return axios.post(`${this._url()}/user`, { name, username, email, password, description, picture})
     },
 
     loginUser: function (username, password) {

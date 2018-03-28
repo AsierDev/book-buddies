@@ -43,43 +43,35 @@ class Carousel extends Component {
             speed: 500,
             autoplay: true,
             autoplaySpeed: 3000,
-            slidesToShow: 6,
-            slidesToScroll: 6,
+            slidesToShow: 5,
+            slidesToScroll: 5,
             initialSlide: 0,
             nextArrow: 0,
             prevArrow: 0,
             responsive: [{
-                breakpoint: 1024,
+                breakpoint: 1224,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     
                 }
             }, {
-                breakpoint: 869,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    initialSlide: 0
-                }
-            }, {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    initialSlide: 0
-                }
-                }, {
-                    breakpoint: 600,
+                    breakpoint: 1024,
                     settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
                         initialSlide: 0
-                        
                     }
                 }, {
-                    breakpoint: 360,
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 0
+                }
+                }, {
+                    breakpoint: 520,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -92,7 +84,7 @@ class Carousel extends Component {
         return (
             <div>
 
-                <section className="hero is-primary">
+                <section className="hero is-primary boxCarousel">
                     <div className="hero-body" id="title">
                         <div className="container has-text-left">
                             <h1 className="title" >
@@ -106,9 +98,9 @@ class Carousel extends Component {
 
                 {this.state.results.map(_results => 
                 
-                    <div key={_results.id}>
+                    <div key={_results.id} className="imagesHolder">
                         
-                        <figure className="image is-square"  onClick={bookId => this.showBook(_results.id) }>
+                        <figure className="image covers"  onClick={bookId => this.showBook(_results.id) }>
                             <img src={_results.thumbnail} alt="Book Cover" />
                         </figure>
                     

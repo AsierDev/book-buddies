@@ -20,6 +20,13 @@ const User = new Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
+    picture: {
+        type: String,
+    },
     favorites: [
         {
             type: ObjectId,

@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom"
 import ScrollToTop from 'react-scroll-up'
 import Loader from './../../Loader/Loader'
 
+
 import './ResultsList.css'
 
 class ResultsList extends Component {
@@ -33,61 +34,7 @@ class ResultsList extends Component {
 
     }
 
-  /*   sendToList = (list) => {
-
-        const userId = sessionStorage.getItem("userId")
-        const bookId = 
-        const bookTitle =  
-
-
-        if ((list === "favoritos" && this.state.userFavorites.includes(bookId)) || (list === "wishlist" && this.state.userWished.includes(bookId))) {
-            alert("Libro ya está en la lista")
-        } else {
-
-            booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
-                .then(() => this.retrieveUser())
-        }
-
-    }
-
-    retrieveUser = () => {
-
-        const userId = sessionStorage.getItem("userId")
-
-        let favorites = []
-        let wished = []
-        let comments = []
-
-        booksBuddiesApi.retrieveUser(userId)
-            .then(_user => {
-
-
-                _user.data.data.favorites.map(fav => {
-                    return favorites.push(fav.id)
-                })
-
-                _user.data.data.wishlist.map(wish => {
-                    return wished.push(wish.id)
-                })
-
-                _user.data.data.reviews.map(comment => {
-                    return comments.push(comment.id)
-                })
-            }
-
-            )
-
-            .then(() =>
-
-                this.setState({
-                    userFavorites: favorites,
-                    userWished: wished,
-                    userComments: comments
-                })
-            )
-
-    }
- */
+ 
     render() {
 
         let loading;
@@ -102,7 +49,21 @@ class ResultsList extends Component {
             <div className="column is-10">
                 {loading}
 
-                {this.state.results.map(_results =>
+                {
+                    this.state.results.length < 2 ?
+                        <div className="notification  noResults has-text-centered">
+                           
+                            <h2 className="is-size-3 "> No hay resultados para esta busqueda </h2>
+
+                        </div>
+
+                    
+             
+                    :
+                
+
+
+                this.state.results.map(_results =>
 
                     <a key={_results.id} 
                     onClick={bookId => this.selectedBook(_results.id) }>
@@ -136,29 +97,15 @@ class ResultsList extends Component {
                                     
                                         </div>
                                     </article>
-                                            {/*  <nav className="level is-mobile">
-                                                <div className="level-left listIcons">
-
-                                                    <span className="level-item">
-                                                        <span className="icon is-size-4">
-                                                            <i className="fa fa-star" />
-                                                        </span>
-                                                    </span>
-                                                    <span className="level-item">
-                                                        <span className="icon is-size-4">
-                                                            <i className="fa fa-heart" />
-                                                        </span>
-                                                    </span>
-                                                </div>
-                                            </nav>  */}
+                                            
                                 </div>
                             </div>
                         </div>
                     </a>
-                )}
+                )} 
 
                 <ScrollToTop showUnder={160}>
-                    <a className="button is-primary is-rounded is-outlined"> &#x21E7; </a>
+                    <a className="button is-medium is-primary is-rounded "> &#x21E7; </a>
                 </ScrollToTop>
             </div>
         )

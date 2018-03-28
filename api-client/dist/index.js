@@ -38,8 +38,8 @@ var bookBuddiesApi = {
         return axios.put(this._url() + '/book/' + bookId + '/add', { userId: userId, list: list });
     },
 
-    registerUser: function registerUser(name, username, email, password) {
-        return axios.post(this._url() + '/user', { name: name, username: username, email: email, password: password });
+    registerUser: function registerUser(name, username, email, password, picture) {
+        return axios.post(this._url() + '/user', { name: name, username: username, email: email, password: password, picture: picture });
     },
 
     loginUser: function loginUser(username, password) {

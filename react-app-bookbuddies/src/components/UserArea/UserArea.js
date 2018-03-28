@@ -7,12 +7,14 @@ import './UserArea.css'
 
 
 
+
 class UserArea extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            user: undefined
+            user: undefined,
+           
         }
     }
 
@@ -31,6 +33,8 @@ class UserArea extends Component {
 
         this.props.history.push(`/book/${id}`)
     }
+
+    
 
     render() {
 
@@ -57,7 +61,7 @@ class UserArea extends Component {
                             <div className="column is-one-fifth">
                                 <figure className="userPic">
 
-                                    <img className="image is-128x128" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile" />
+                                    <img className="image is-128x128" src={user.picture} alt="Profile" />
 
                                 </figure>
                             </div>
@@ -69,8 +73,7 @@ class UserArea extends Component {
                                     </div>
                                     <h6 className="has-text-weight-semibold">Un poco sobre mi</h6>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas
-                                        non massa sem. Etiam finibus odio quis feugiat facilisis.
+                                        {user.description}
                                     </p>
                                 </div>
                             </div>

@@ -67,7 +67,7 @@ class Login extends Component {
             this.setState({
                 loader: !this.state.loader
             })
-            console.log(this.state.loader)
+            
         })
             
         } 
