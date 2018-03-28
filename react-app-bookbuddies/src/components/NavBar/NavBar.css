@@ -1,0 +1,16 @@
+.dropdown, .dropdown button, .dropdown trigger  {
+  background: transparent;
+  border-color: transparent
+}
+
+.dropdownTitle {
+  color: white
+}
+
+/* .navInput {
+margin-right: 5rem
+} */
+
+.navInput input {
+  max-width: 200px;
+} 

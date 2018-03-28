@@ -1,0 +1,32 @@
+#categories{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.menu-list {
+    line-height: 1.5
+}
+
+
+@media (max-width: 594px) {
+    
+    li {
+        float: left;
+        position: relative;
+    }
+    .secondColumn {
+        margin-top: 100px
+    }
+}
+
+@media (min-width: 595px) and (max-width: 768px) {
+
+    li {
+        float: left;
+        position: relative;
+    }    
+      .secondColumn {
+        margin-top: 65px
+    }
+
+}

@@ -1,0 +1,74 @@
+/* BOOK DETAILS */
+
+/* .details {
+    margin-top: 5%;
+    margin-left: 5%;
+} */
+
+@media (max-width: 768px) {
+
+  .profilePic {
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .basic-details {
+    text-align: center;
+  }
+}
+
+/*  RATING INPUT  */
+
+
+.rating {
+  margin-top: 1em;
+  margin-bottom: 1em;
+ 
+}
+
+.opinion-scale {
+  margin-bottom: 1em;
+}
+.opinion-scale ul {
+  list-style: none;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 0.5em;
+}
+.opinion-scale li {
+  display: table-cell;
+  width: 1%;
+  word-break: break-word;
+  border: #363636 solid 1px;
+}
+.opinion-scale li input[type="radio"] {
+  display: none;
+}
+.opinion-scale li input[type="radio"]:checked + label {
+  background-color: #00d1b2;
+  color: whitesmoke;
+  border-color: #00d1b2;
+}
+.opinion-scale li label {
+  background-color: white;
+  color: #00d1b2;
+  border: 1px solid whitesmoke;
+  text-align: center;
+  line-height: 2em;
+}
+#opinion-10 {
+  width: 2%
+}
+
+
+/* COMENTARIOS */
+
+.comentarios {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.content-body {
+ 
+}

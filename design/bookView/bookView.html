@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BokView - Book Buddies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+        crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.6.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="./bookPreview.css">
+</head>
+
+<body>
+
+
+    <main class="container">
+
+        <div class="box">
+
+            <section class="columns is-centered">
+
+                <div class="column is-one-quarter">
+
+                    <figure class="profilePic image is-128x128">
+
+                        <img src="https://bulma.io/images/placeholders/128x128.png">
+
+                    </figure>
+
+                </div>
+
+                <div class="column is-half">
+                    <div class="content details">
+                        <div class="basic-details">
+
+                            <h2 class="">Titulo Libro</h2>
+    
+                            <h5 class="is-italic">
+                                <em> Autores del libro</em>
+                            </h5>
+    
+                            <br>
+                            <p>
+                                <span> ISBN:</span> 8445077929
+                                <br>
+                                <span>Páginas:</span> 456
+                                <br>
+                                <span>Fecha de publicacion:</span> 2010-07-15
+                                <br>
+                                <br>
+                                <span class="tag is-link">Ciencia</span>
+                            </p>
+                        </div>   
+
+                    </div>
+
+                </div>
+
+                <div class="is-one-quarter">
+
+                    <div class="details">
+
+                        <div class='has-text-centered'>
+                            <p class='is-size-2-desktop is-size-3-tablet is-size-4-mobile'>8</p>
+                            <p class=''>Rating</p>
+                        </div>
+                        <br>
+                        <div class="">
+
+                            <div class="has-text-centered">
+                                <a class="button is-primary is-outlined">Añadir a Favoritos</a>
+                            </div>
+                            <br>
+                            <div class="has-text-centered">
+                                <a class="button is-primary is-outlined">Añadir a Wishlist</a>
+                            </div>
+                            <br>
+                            <div class="has-text-centered">
+                                <a class="button is-primary is-outlined">Añadir Comentario</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                </div>
+
+            
+                
+                
+            </section>
+            
+            <section>
+                <div class="box rating">
+                <form name="opinion">
+                    <div class="field opinion-scale">
+                        <ul>
+                            <li>
+                                <input type="radio" id="opinion-0" name="opinion-scale" value="0">
+                                <label class="label is-large" for="opinion-0">0</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-1" name="opinion-scale" value="1">
+                                <label class="label is-large" for="opinion-1">1</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-2" name="opinion-scale" value="2">
+                                <label class="label is-large" for="opinion-2">2</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-3" name="opinion-scale" value="3">
+                                <label class="label is-large" for="opinion-3">3</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-4" name="opinion-scale" value="4">
+                                <label class="label is-large" for="opinion-4">4</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-5" name="opinion-scale" value="5">
+                                <label class="label is-large" for="opinion-5">5</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-6" name="opinion-scale" value="6">
+                                <label class="label is-large" for="opinion-6">6</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-7" name="opinion-scale" value="7">
+                                <label class="label is-large" for="opinion-7">7</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-8" name="opinion-scale" value="8">
+                                <label class="label is-large" for="opinion-8">8</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-9" name="opinion-scale" value="9">
+                                <label class="label is-large" for="opinion-9">9</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="opinion-10" name="opinion-scale" value="10">
+                                <label class="label is-large" for="opinion-10">10</label>
+                            </li>
+            
+                        </ul>
+                        <button class="button">Submit</button>
+                </form>
+                </div>
+            </section>
+
+            <section class="box">
+
+                <section class="hero is-dark">
+                    <div class="hero-body comentarios">
+                        <div class="container">
+                            <h2 class="subtitle">
+                                Sipnosis de {nombre del libro}
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+    
+                <section class="message is-dark">
+                    <div class="message-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit
+                        amet fringilla. Nullam gravida purus diam, et dictum
+                        <a>felis venenatis</a> efficitur. Aenean ac
+                        <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor
+                        ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+                    </div>
+                </section>
+
+            </section>
+
+            <section>
+                <article class="hero is-primary">
+                    <div class="hero-body comentarios">
+                        <div class="container ">
+                            <h2 class="subtitle">
+                                Comentarios
+                            </h2>
+                        </div>
+                    </div>
+                </article>
+    
+                <article class="box content">
+                    <div class="content-body">
+                        <div class="box">
+
+                            <h3> Titular Comentario</h3>
+                            <p>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sunt sed reiciendis dolorum! Eveniet cum vel, atque quasi ratione ex sequi. Aliquam explicabo esse autem voluptates totam fugit, a soluta?
+                            </p>
+                            <p>
+                                Nombre usuario
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+            </div>
+
+    </main>
+
+
+</body>
+
+</html>

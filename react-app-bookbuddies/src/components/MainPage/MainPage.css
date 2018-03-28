@@ -1,0 +1,49 @@
+
+/* HEADER */
+
+#header {
+  background-image: url("../../../src/images/heroBackground.jpg");
+  background-size: cover;
+  
+}
+
+.hero-opacity {
+  background: rgba(0,0,0,0.5) 
+}
+
+
+#heroContainer {
+  margin-top: -5%
+}
+
+#title, #subtitle  {
+  padding-bottom: 40px;
+}
+
+.control {
+  padding-bottom: 2rem
+}
+
+#inputForm {
+  margin-top: 40px;
+  width: 80%;
+  max-width: 600px;
+  min-width: 250px;
+}
+
+
+/*  NAV */
+
+.heroMain .navInput {
+  display: none
+}
+
+
+
+
+/* FOOTER */
+
+.footer {
+  background-color: #363636;
+  color:white
+}

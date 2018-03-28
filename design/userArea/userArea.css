@@ -1,0 +1,24 @@
+.profilePic {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.nameUser {
+
+    margin-top: 5%;
+}
+
+.hightlights {
+    margin-top: 5%;
+    border-left: 1px dotted rgba(0, 0, 0, 0.2);
+}
+
+.hightlights-left {
+    border-left: none !important;
+}
+
+.socialIcons{
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -50,6 +50,12 @@
 ### - Main
 ![Main](./design/img/Data-Views-UML/Main.png)
 
+### - Listing Books
+![Listing](./design/img/Data-Views-UML/ListedBooks.png)
+
+### - Book Details View
+![Book Details](./design/img/Data-Views-UML/BookView.png)
+
 
 ## Calendar 
 
@@ -65,3 +71,9 @@
 ## Trello
 
 [Enlace a Trello](https://trello.com/b/VuBC8YmB/book-buddies)
+
+## Heroku && surge
+
+-   [surge](http://book-buddies.surge.sh/#/)
+-   [heroku](https://aqueous-tundra-90892.herokuapp.com/)
+-   [herokugit](https://git.heroku.com/aqueous-tundra-90892.git)
