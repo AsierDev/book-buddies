@@ -42,8 +42,6 @@ class ResultsList extends Component {
             loading = <Loader />
         }
 
-        console.log(this.state.results)
-
         return (
 
             <div className="column is-10">

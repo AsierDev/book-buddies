@@ -83,7 +83,7 @@ class Register extends Component {
 
         booksBuddiesApi.registerUser(name, username, email, password, description, picture)
         .then(register => {
-            console.log(register)
+
             swal({
                 type: 'success',
                 title: 'Usuario registrado correctamente',

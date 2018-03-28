@@ -48,7 +48,7 @@ class MainPage extends Component {
     componentDidMount() {
         bookBuddiesApi.retrieveRandom()
         .then( (books) => {
-            console.log(books.data.data)
+
             this.setState({ 
                 results: books.data.data,
                 loading: false

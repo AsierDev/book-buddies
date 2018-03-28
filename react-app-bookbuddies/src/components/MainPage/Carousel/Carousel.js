@@ -19,7 +19,6 @@ class Carousel extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.onLanding)
 
         this.setState ({
             results: nextProps.onLanding
@@ -34,8 +33,6 @@ class Carousel extends Component {
  
 
     render() {
-
-        console.log("render")
 
         const settings = {
             dots: true,
