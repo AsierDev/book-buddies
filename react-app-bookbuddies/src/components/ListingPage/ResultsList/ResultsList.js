@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
 import ScrollToTop from 'react-scroll-up'
+import Loader from './../../Loader/Loader'
 
 import './ResultsList.css'
 
@@ -12,13 +13,17 @@ class ResultsList extends Component {
             results: [],
             userFavorites: [],
             userWished: [],
-            userComments: []
+            userComments: [],
+            loading: true
         }
     }
 
     componentWillReceiveProps(nextProps) {
 
-        this.setState({ results: nextProps.onSearch.data.data })
+        this.setState({ 
+            results: nextProps.onSearch.data.data,
+            loading: false 
+        })
 
     }
 
@@ -85,11 +90,17 @@ class ResultsList extends Component {
  */
     render() {
 
+        let loading;
+        if (this.state.loading) {
+            loading = <Loader />
+        }
+
         console.log(this.state.results)
 
         return (
 
             <div className="column is-10">
+                {loading}
 
                 {this.state.results.map(_results =>
 
@@ -97,17 +108,18 @@ class ResultsList extends Component {
                     onClick={bookId => this.selectedBook(_results.id) }>
 
                         <div className="box content secondColumn" >
+                            
                             <div className="notification is-dark">
                                 <div className="box">
                                     
                                     <article className="columns">
-                                        <div className="column is ">
+                                        <div className="column is-4 ">
                                             <figure className="image imageResults">
                                                 <img src={_results.thumbnail} className="bookCovers image  " alt="logo" />
                                             </figure>
                                         </div>
 
-                                        <div className="column is-three-quarters">
+                                        <div className="column ">
                                             <div className="content">
                                                 <p>
                                                     <strong className="is-size-4">{_results.title}</strong>

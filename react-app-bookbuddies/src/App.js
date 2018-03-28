@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import 'bulma-extensions/bulma-pageloader'
 import 'bulma/css/bulma.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
