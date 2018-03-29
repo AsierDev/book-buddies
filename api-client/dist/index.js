@@ -5,8 +5,8 @@ var axios = require('axios');
 var bookBuddiesApi = {
     _url: function _url() {
         //  IT WILL BE THIS
-        return 'https://aqueous-tundra-90892.herokuapp.com/api';
-        //return 'http://localhost:5555/api'
+        return "https://aqueous-tundra-90892.herokuapp.com/api"
+        //return 'http://localhost:5555/api';
     },
 
 
@@ -30,20 +30,24 @@ var bookBuddiesApi = {
         return axios.get(this._url() + '/book/' + id);
     },
 
-    addReview: function addReview(bookId, userId, vote, comment, avRate) {
-        return axios.post(this._url() + '/book/' + bookId + '/review', { userId: userId, vote: vote, comment: comment, avRate: avRate });
+    addReview: function addReview(bookId, userId, vote, comment, bookTitle) {
+        return axios.post(this._url() + '/book/' + bookId + '/review', { userId: userId, vote: vote, comment: comment, bookTitle: bookTitle });
     },
 
-    addBookToList: function addBookToList(bookId, userId, list) {
-        return axios.put(this._url() + '/book/' + bookId + '/add', { userId: userId, list: list });
+    addBookToList: function addBookToList(bookId, userId, list, bookTitle) {
+        return axios.put(this._url() + '/book/' + bookId + '/add', { userId: userId, list: list, bookTitle: bookTitle });
     },
 
-    registerUser: function registerUser(name, username, email, password, picture) {
-        return axios.post(this._url() + '/user', { name: name, username: username, email: email, password: password, picture: picture });
+    registerUser: function registerUser(name, username, email, password, description, picture) {
+        return axios.post(this._url() + '/user', { name: name, username: username, email: email, password: password, description: description, picture: picture });
     },
 
     loginUser: function loginUser(username, password) {
         return axios.post(this._url() + '/login', { username: username, password: password });
+    },
+
+    retrieveUser: function retrieveUser(id) {
+        return axios.get(this._url() + '/user/' + id);
     }
 
 };
