@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom"
 import bookBuddiesApi from './../../api/bookBuddiesApi'
 import Footer from './../Footer/Footer'
+import Loader from './../Loader/Loader'
+import swal from 'sweetalert2'
 
 import './MainPage.css'
 
@@ -16,7 +18,8 @@ class MainPage extends Component {
 
         this.state = {
             query: "",
-            results: []
+            results: [],
+            loading: true
         }
     }
 
@@ -30,32 +33,50 @@ class MainPage extends Component {
 
         query = query.replace(/[^A-Za-z_0-9\s]/g, "")
 
-        query.length < 3 ? alert("introduce al menos 3 letras") : this.props.history.push(`/results/${query}`)
+        query.length < 3 ? swal({
+            position: 'top',
+            text: 'Introduce al menos 3 letras para realizar la busqueda',
+            showConfirmButton: true,
+            timer: 1500
+        }): this.props.history.push(`/results/${query}`)
         
 
         this.setState({ query: '' }) 
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         bookBuddiesApi.retrieveRandom()
         .then( (books) => {
-            console.log(books.data.data)
-            this.setState({ results: books.data.data })
+
+            this.setState({ 
+                results: books.data.data,
+                loading: false
+            })
         })
+        
     }
 
 
     render() {
 
+        let loading;
+        if (this.state.loading) {
+            loading = <Loader/>
+        }
+
         return (
+            
             <div>
+                    
+                
                 <section className="hero is-medium" id="header">
                     <div className="hero-opacity">
 
                         <div className="hero-head heroMain">
                             <NavBar />
                         </div>
+                       
 
                         <div className="hero-body" id="heroContainer">
                             <div className="container has-text-centered">
@@ -84,17 +105,27 @@ class MainPage extends Component {
                                                     required
                                                 />
                                             </form>
+                                            
                                         </div>
+                                        {loading}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
+                    
+                {loading}
+                               
                 <Carousel onLanding={this.state.results}/>
-
+            
+                
                 <Footer />
+                
+                
+                
+                
+            
             </div>
 
         )

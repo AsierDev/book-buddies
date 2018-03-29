@@ -40,13 +40,12 @@ class ListingPage extends Component {
 
         this.searchQuery(this.props.match.params.query)
         this.searchCategory(this.props.match.params.category)
-        console.log(sessionStorage)
+
 
     }
 
     componentWillReceiveProps(nextProps) {
 
-        console.log(nextProps)
 
         this.searchQuery(nextProps.match.params.query)
 

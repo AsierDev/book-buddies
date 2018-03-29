@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { withRouter } from "react-router-dom"
+import swal from 'sweetalert2'
 
 import './NavBar.css'
 import bookBuddiesApi from './../../api/bookBuddiesApi'
@@ -41,7 +42,12 @@ class NavBar extends Component {
 
         query = query.replace(/[^A-Za-z_0-9\s]/g, "")
 
-        query.length < 3 ? alert("introduce al menos 3 letras") : this.props.history.push(`/results/${query}`)
+        query.length < 3 ? swal({
+            position: 'top',
+            text: 'Introduce al menos 3 letras para realizar la busqueda',
+            showConfirmButton: true,
+            timer: 1500
+        }): this.props.history.push(`/results/${query}`)
 
         this.setState({ query: '' })
 
@@ -59,9 +65,9 @@ class NavBar extends Component {
         return (
             <nav className="navbar">
                 <div className="container">
-                    <div className="navbar-brand">
-                        <a className="navbar-item" href="#/browse">
-                            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
+                    <div className="navbar-brand logoNav" >
+                        <a className="navbar-item dropdownTitle is-size-4 " href="#/browse">
+                            BookBuddies
                         </a>
 
                         <span

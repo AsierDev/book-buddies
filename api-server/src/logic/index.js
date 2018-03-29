@@ -339,17 +339,17 @@ module.exports = {
             })
     },
 
-    createUser(name, username, email, password) {
+    createUser(name, username, email, password, description, picture) {
         return Promise.resolve()
             .then(() => {
-                validate({ name, username, email, password })
+                validate({ name, username, email, password, description })
 
                 return User.findOne({ username })
             })
             .then(user => {
                 if (user) throw Error('username already exists')
 
-                return User.create({ name, username, email, password })
+                return User.create({ name, username, email, password, description, picture})
             })
     },
 

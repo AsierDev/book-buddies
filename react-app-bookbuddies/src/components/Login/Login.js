@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css'
+import swal from 'sweetalert2'
 
 import booksBuddiesApi from './../../api/bookBuddiesApi'
 
@@ -13,7 +14,8 @@ class Login extends Component {
 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+
         }
     }
 
@@ -33,25 +35,40 @@ class Login extends Component {
         
       sessionStorage.setItem('userId',_login.data.data.id._id)
        
-
-       console.log(sessionStorage)
     }
 
     handleSubmit = () => {
 
         booksBuddiesApi.loginUser(this.state.username, this.state.password)
 
-            .then(_login =>{
+        .then(_login =>{
+            
+            
+            if (_login.data.status === 'OK') {
+                this.getUserId(_login)
+
+                this.setState({
+                    loader: !this.state.loader
+                })
                 
-                
-                if (_login.data.status === 'OK') {
-                    this.getUserId(_login)
-                    
-                   this.props.history.push(`/browse`)
-                } else {
-                    alert("Wrong Password and/or Username")
-                }
+                this.props.history.push(`/browse`)
+            } else {
+                swal({
+                    type: 'error',
+                    title: 'Usuario y/o contraseña incorrectos',
+                    showConfirmButton: true,
+                    timer: 3000
+                })
+            }
+        })
+        
+        
+        .then(() => {
+            this.setState({
+                loader: !this.state.loader
             })
+            
+        })
             
         } 
         
@@ -95,7 +112,7 @@ class Login extends Component {
                                         </p>
                                         <hr />
                                         <p className="control">
-                                            <button className="button is-primary">Login</button>
+                                            <button className="button is-primary" data-target="pageloader">Login</button>
                                             <button id="cancel" className="button is-danger">Cancel</button>
                                         </p>
                                     </form>    
@@ -109,6 +126,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
+                
             </section>
        
 

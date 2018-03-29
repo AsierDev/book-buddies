@@ -124,7 +124,13 @@ class BookDetails extends Component {
 
 		if (this.state.userComments.includes(bookId)) {
 
-			swal('Ya has comentado este libro')
+			swal({
+				type: 'error',
+				title: 'Ya has comentando este libro',
+				showConfirmButton: true,
+				timer: 1500
+			})
+
 		} else {
 
 		this.setState({
@@ -142,7 +148,12 @@ class BookDetails extends Component {
 
 
 		if ((list === "favoritos" && this.state.userFavorites.includes(bookId)) || (list === "wishlist" && this.state.userWished.includes(bookId))) {
-			swal("Ya tienes el libro en tu lista")
+			swal({
+				type: 'error',
+				title: 'Ya tienes este libro en la lista',
+				showConfirmButton: true,
+				timer: 1500
+			})
 		} else {
 
 			booksBuddiesApi.addBookToList(bookId, userId, list, bookTitle)
