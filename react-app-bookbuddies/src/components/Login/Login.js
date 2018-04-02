@@ -39,7 +39,7 @@ class Login extends Component {
 
     handleSubmit = () => {
 
-        booksBuddiesApi.loginUser(this.state.username, this.state.password)
+        booksBuddiesApi.loginUser(this.state.username.trim(), this.state.password.trim())
 
         .then(_login =>{
             
