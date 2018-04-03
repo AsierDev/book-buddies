@@ -67,11 +67,11 @@ class UserArea extends Component {
                             <div className="column is-three-fifths">
                                 <div className="content">
                                     <div className="has-text-centered-mobile">
-                                        <h2 className="nameUser">{user.username}</h2>
+                                            <h2 className="nameUser is-capitalized">{user.username}</h2>
                                         <br />
                                     </div>
                                     <h6 className="has-text-weight-semibold">Un poco sobre mi</h6>
-                                    <p>
+                                    <p className="is-italic">
                                         {user.description}
                                     </p>
                                 </div>
