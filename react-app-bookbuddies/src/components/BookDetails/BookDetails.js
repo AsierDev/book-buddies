@@ -57,11 +57,6 @@ class BookDetails extends Component {
 				this.handleModal()
 
 			)
-
-
-
-
-
 	}
 
 	componentWillMount() {
