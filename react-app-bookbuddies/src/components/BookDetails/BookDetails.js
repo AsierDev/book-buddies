@@ -5,6 +5,7 @@ import booksBuddiesApi from './../../api/bookBuddiesApi'
 import NavBar from './../NavBar/NavBar'
 import './bookPreview.css'
 import swal from 'sweetalert2'
+import Loader from './../Loader/Loader'
 
 
 class BookDetails extends Component {
@@ -19,7 +20,8 @@ class BookDetails extends Component {
 			modal: false,
 			userFavorites: [],
 			userWished: [],
-			userComments: []
+			userComments: [],
+			
 		}
 	}
 
@@ -55,11 +57,6 @@ class BookDetails extends Component {
 				this.handleModal()
 
 			)
-
-
-
-
-
 	}
 
 	componentWillMount() {
@@ -113,7 +110,8 @@ class BookDetails extends Component {
 			booksBuddiesApi.retrieveBook(id)
 				.then(_id =>
 					this.setState({
-						results: _id.data.data
+						results: _id.data.data,
+						
 					})
 				)
 	}
@@ -172,6 +170,8 @@ class BookDetails extends Component {
 
 
 	render() {
+
+		
 
 		const { results, userFavorites, userWished, userComments } = this.state
 
@@ -376,10 +376,10 @@ class BookDetails extends Component {
 												{review.comment ?
 
 													<div className="box">
-														<p>
+														<p className="has-text-grey-dark is-italic">
 															{review.comment}
 														</p>
-														<p>
+														<p className="has-text-grey is-size-7 has-text-weight-semibold is-capitalized">
 															{review.user.username}
 														</p>
 													</div>
@@ -515,7 +515,7 @@ class BookDetails extends Component {
 								</div>
 							</div>
 							:
-							null}
+							 null }
 
 					</main>
 
@@ -524,7 +524,7 @@ class BookDetails extends Component {
 
 
 
-				: null
+				: <Loader />
 
 
 		)

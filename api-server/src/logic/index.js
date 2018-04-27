@@ -200,6 +200,7 @@ module.exports = {
                             if (error) return reject(error)
                         
                             bookTitle = results.title
+                            
                             googleBookProps.forEach(prop => {
 
 
